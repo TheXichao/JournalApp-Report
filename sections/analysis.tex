@@ -1,0 +1,142 @@
+% analysis.tex
+\chapter{Analysis}
+
+
+\section{Problem Area}
+
+The issue identified is the lack of mindfulness and increased forgetfulness. Keeping a journal acts as a way to document significant moments within an individual's life, while providing a personal and private way for people to express their emotions. I find myself a perfect example of somebody that is lost in 'modern life,' leading me to forget even simple events which had occurred within my day. 
+
+In a hectic world full of day-to-day distractions, the creation of a consumerist culture through the rise of social media has increased the likelihood for individuals to feel less content with their day-to-day lives. We are  consuming content through different forms of media, whether that be through our computers, phones or televisions. As a result, individuals are left constantly craving to ingrain more information, but none of this information is retained. The society of the modern-world has evolved the extent that it has made it inevitable for individuals to be exposed to the high-volume of content. Such content is easily accessible through our phones,  inevitably leading individuals to become overwhelmed and overloaded. If we consider the Covid-19 quarantine and its long lasting impact on teenagers mental health, \cite{Imran_Aamer_Sharif_Bodla_Naveed_2020} it has left a void for individuals needing to relieve their anxieties and reduce the overall stress incorporated into their daily lives. Journalling can induce a positive impact on individuals struggling with the overwhelming nature of social media and how it has clearly merged itself with day-to-day life, bringing mindfulness as a positive method in documenting and organising a person's life. 
+
+
+Keeping a Journal increases productivity and mindfulness. I have always wanted to incorporate this habit into my daily routine, and through my NEA, I hope to create an easily accessible platform for myself and those alike. For my NEA, I want to create a minimal, easily navigated web-interface where individuals can add entries, storing the data, and through my web-interface, these entries can be safely stored for personal use for whoever is accessing the website. 
+
+\subsection{Benefits of Journalling}
+Here are some benefits that I thought of:
+\begin{itemize}
+  \item It is a method of mindful writing that can help you to become more aware of your thoughts and feelings. Therefore come to terms with them.
+  \item Simply jot down your thoughts and ideas, and you can come back to them later.
+  \item It can help you to become more organised and productive by making you more aware of your goals and aspirations.
+\end{itemize}
+
+\bigskip
+
+\section{Client / End User}
+
+Journalling is an excellent habit anyone could incorporate into their daily lives. However, my primary target end-user for my app would be teenagers like myself who need a safe and easily accessible place to document their lives and jot down their thoughts, emotions and goals. 
+
+I've wanted to journal for quite some time now, but due to my busy schedule and overall forgetfulness, I have never been consistent with the habit for over a week. To finally properly start journalling once and for all, I will build a website front end that can be accessed as long I have an internet-connected device. This way, I can journal no matter where I am, reducing the friction which prevents me from cultivating the habit of journalling.
+
+\subsection{Survey Result}
+I have created a survey for friends who are my age to fill out
+
+\subsection*{Interview}
+ I had an interview with a teacher at my school who represents the someone who's slightly older than me and represent the wider user base of the app. I have picked out some responses which is particularly relevant for the application.
+
+\newcounter{question}
+\setcounter{question}{0}
+
+\newcommand{\question}[1]{\item[Q\refstepcounter{question}\thequestion.] \textit{#1}}
+\newcommand{\answer}[1]{\item[A\thequestion.] #1}
+
+
+    \begin{itemize}
+            \question{How do you feel about the security of your personal information in digital platforms? Are there expectations you have?}
+            \answer{"...Yeah, surely my password and logins should be protected and private"}
+
+            \item Users of the platform want to have a way of securely storing their sensitive information. Therefore, I will need to implement a secure way of not only storing user but also encrypting the data that is stored in there. For demonstrating purposes I will be encrypting the most sensitive data such as the user's password.
+            
+
+            \question{Can you describe what you look for in a good app interface? Are there any design elements or navigation styles you find particularly helpful or annoying?}
+            \answer{"...I would like to have an easy-to-use menu with options instead of a gimmicky and too-visual website."}
+            \item The user wants a simple and easy to use interface. Therefore, I will need to design a clean and feature rich interface. I think a navigation bar would be a good idea to implement as it clearly shows all the options available to the user.
+
+            \question{How important is an app's speed and responsiveness to your overall user experience? Have you stopped using an app because it was too slow or unresponsive?}
+            \answer{"Yes, very much it’s a waste of my time, I would rather use something else."}
+            \item Performance is a key factor in the user experience. Therefore, I will need to ensure that the app is responsive and fast. I will need to use a framework that is known for its speed and performance.
+
+            \question{How has your experience been with digital note-taking or journaling tools compared to traditional methods?}
+            \answer{"No one carries a pen and paper anymore, dont be silly... Yeah [digital journalling] would be very useful for people on the go."}
+            \item Website is accessible through all devices with an internet connection. Creating a website lays the fundation of the app, providing a good way for the user to do the journalling. In the future I can add different forms of application.
+
+            \question{Any additonal comments?}
+            \answer{"I find it frustrating with other apps to enter the date every time I want to log something. Can’t it just record it automatically
+            Automatically - you can have your morning meeting then later you can have your evening meeting it automatically enters the date . It would be quite handy."}
+
+            \answer{"I like it the data sync between different devices."}
+            \item User wants to be able to have consistent data for ease of access. Building an API and backend means I can store the data in a way that is easily accessible and consistent. These data can then be accessed through all forms of frontend interfaces. Th proves that in the future I can create other interfaces such as a mobile app and be able to have consistent data via the backend.
+
+    \end{itemize}
+
+
+
+
+\section{Research Methodology}
+Initially what inspired me to create a mindful journal app was when I watched a Youtube Video which introduced the concept of journalling, it highligthed the vast array of benefits that journalling can bring to an individual. Then, I looked through various online articles to understand the concept abit more. 
+
+A reason for the creation of the app was because I wanted to create a habit of journalling, and I thought that creating an app would be a good way to do so. I have also conducted a survey and an interview to understand the needs of the user and to understand the requirements of the app.
+
+Some of the research methods I have used include:
+\begin{itemize}
+  \item Surveys
+  \item Interviews
+  \item Watching YouTube videos
+  \item Online Research
+  \item Personal Experience
+\end{itemize}
+
+\section{Features of Proposed Solution}
+Below I have synthesised the core features of the proposed solution. I have broken down the features into two categories - frontend and backend.
+
+\section{Requirements Specification}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{8cm}|p{4cm}|}
+\hline
+\textbf{ID} & \textbf{Requirement Description} & \textbf{How to Evidence}\\ \hline
+1.1 & Develop a login page to authenticate users, include forms for user input and dynamically provide error/feedback when necessary. & Demonstrate through UI screenshots or video, and code snippets. \\ \hline
+
+1.2 & Implement a registration page enabling new users to create an account, take in input for email, password, last name, first name and interact/update backend. Provide feedback to the user after submission. & Demonstrate through UI screenshots or video, and code snippets.\\ \hline
+
+2.1 & Create a page for users to compose new journal entries. Input parameters are title and content of the entry. Interact with the corresponding endpoint and provide feedback to the user.& Video of the UI as well as checking database to verify successful submissions as well as code snippets.\\ \hline
+
+2.2 & Design a retrieve journal page that lists all the user’s entries, with options for sorting the entries in ascending or descending order based on creation date or other criteria in an efficient way. & Video documenting interactions with the UI, showing the features listed.\\ \hline
+
+3.1 & Implement navigation bar that adjusts its visibility of options based on the user's login status. & Video of the UI and code snippets.\\ \hline
+
+4.1 & Utilize state management techniques to keep the user logged in across different pages, preserving session information securely. & Screenshot and explanation of the implementation as well as video of functioning app.\\ \hline
+
+4.2 & Handle fetching, posting, and updating data through JSON responses from the backend. & Screenshot of code snippets showcasing a couple example of this in action. \\ \hline
+\end{tabular}
+\caption{Frontend Requirements for Journal App}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|p{8cm}|p{4cm}|}  
+\hline
+\textbf{ID} & \textbf{Requirement Description}& \textbf{How to Evidence} \\ \hline
+1.1 & Design data models for users, journal entries, with relationships defined. & Screenshot of my database admin panel with created models and their relationship as well as code snippet of the definition of the models. \\ \hline
+
+1.2 & Have an effective way to check the submitted user information, journal entries, and related data before stored in the database, ensuring data stored are in the required format. & Code snippet and testing of the function that checks and validates the format of the provided data. \\ \hline
+
+2.1 & Develop RESTful API endpoints with functionalities implemented to handle user authentication (login and registration) and other core endpoints that drives the journal app as a whole & use tools to run requests against the endpoints and capture their responses, testing different cases.\\ \hline
+
+2.2 & Features for secure password storage(salting and hashing) and and authenticate; token generation for session management.& Run tests to see the functionalities are working\\ \hline
+
+3.1 & Ensure all API endpoints are secured and accessible only to authenticated users, using tokens or similar mechanisms for session management.& screenshots of authenticated requests and their responses. \\ \hline
+
+3.2 & Apply best practices for securing sensitive data in the database and during data transmission. \\ \hline
+4.1 & Design the backend architecture for scalability, considering future feature expansions and potential increases in user base. \\ \hline
+4.2 & Document the API endpoints, data models, and any critical backend logic for maintenance and future development purposes. \\ \hline
+\end{tabular}
+\caption{Backend Requirements for Journal App}
+\end{table}
+
+
+        
+\section{Critical Path}
+The critical path refers to the sequence of the stages in the development of my application. I am doing full stack development, which includes independent backend and frontend. The Agile methodology would be suitable one I will be following for my project. This is because it is a flexible and iterative approach which allows repeated test of all the small modules and eventually building up to a complete solution. It is also a good way to manage the project as I can easily adapt to changes, and I will need to make many changes since there will be many new things I will learn and obstacles overcome to as I am developing the app.
+
