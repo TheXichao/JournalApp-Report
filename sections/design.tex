@@ -76,6 +76,7 @@ Now, to bring everything together, I have designed a flowchart to depict the flo
     \label{fig:3.3}
 \end{figure}
 
+Something to note is that users can only access webpages via HTTP(s) requests (probably through a internet browser). The backend is not intended to be accessed by the user directly. Communication with the server happens internally through private requests. This is a good design practice as it ensures that the server is secure and reduces the risk of attacks by malicious users. 
 
 
 \section{Data Structures / Data Modelling}
@@ -100,15 +101,12 @@ Looking through the specifications of my journal app, I have identified data tha
 \end{figure}
 
 
-\subsection{Abstract Data Structures}
-
-
 
 \subsection{External Data Sources}
-Discuss any external data sources utilized.
+In a bit of my code I implemented API calls to google cloud natural language API to perform sentiment analysis, it is a method included in the entry class in the backend, it can be used to generate a score for the sentiment of the user represented by a float value. This is just a gimmick feature but not core to the project.
 
 \subsection{OOP Model}
-One of the core features of Django is the built-in Object Relation Mapping, which enables me to Model my database using Objects. Initially, I explored writing SQL queries to create my database(see appendix), but as my project grew in complexity, I realised that to use some powerful features provided by Django, for example, the authentication and the administrator interface, it would be more efficient and convenient to use Django's Object Relation Mapping capabilities. 
+One of the core features of Django is the built-in Object Relation Mapping, which enables me to Model my database using Objects. Initially, I explored writing SQL queries to create my database, but as my project grew in complexity, I realised that to use some powerful features provided by Django, for example, the authentication and the administrator interface, I need to integrate Django's Object Relational Mapping functionalities with my database. With this powerful feature, database schema can be defined using Python classes. Additionally, when it comes to interacting with defined data models, Django provides three ways to interact with the database: the Django ORM, raw SQL queries, and the admin panel. Enabling me to have the best of both worlds, the flexibility of powerful SQL queries and the ease of use of the Django ORM (with the bonus of a GUI interface).
 
 
 \begin{figure}[!hbt]
@@ -116,6 +114,12 @@ One of the core features of Django is the built-in Object Relation Mapping, whic
     \includegraphics[width=\linewidth]{Assets/UML.png}
     \caption{UML Class Diagram}
     \label{fig:UML}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Assets/UML_keys.png}
+    \caption{Keys explaining the arrows in the UML diagram \cite{carnes2021uml}}
 \end{figure}
 
 In my models.py file, I have defined several classes that represent different objects in my project:
@@ -132,10 +136,11 @@ Multiple inheritance is a feature that's not common to all OOP languages since i
 
 Both the Journal and Entry classes are inherited from the Django Model class. This allows me to utilise Django's object relational mapping capabilities to interact with the database smoothly. Entry has a composition relationship with a Journal because an entry is a part of a journal and cannot exist independently. Similarly, the Journal class has a one-to-one association with the MyUser class, indicating that each journal entry is associated with a specific user.
 
+\subsection{Handling JSON}
+JSON data are repeatedly used in my project. JSON are in the form of key-value pairs, similar to a dictionary in Python. In my project, I have used JSON data for communication and it is also just a nice way to store other information. One example off the top of my head is that I store the secret key for my application in a secret.json file which I render with python code.
 
-\section{File / Table Structures}
-Explain the file or table structures used.
-
+\subsection{Typescript Interface}
+Conceptually Typescript interface is very similar to the Object Oriented Principal of Interface. Both are used to layout the "shape" of an object. It allows a form of abstraction and encapsulation in the code, since only the blueprint of the object is defined and also many methods and properties are bundled into one. In my project, Interface is very useful to model the blueprint of the data I am expected to receive from the backend. By defining interfaces, I can guarantee the format of the is as expected which increase the maintainability of the code and reduce the change of unexpected errors.
 
 
 \section{Algorithms}
@@ -147,13 +152,49 @@ Choosing an effective algorithm can improve responsiveness of the application an
 
 Sorting algorithms like bubble sort and insertion sort are bad for large datasets since they have a time complexity of O(\(n^2\)) on average. Hence, I will be choosing an efficient sorting algorithm such as Quicksort or Merge Sort, two divide and conquer algorithms, which have a time complexity of $O(n\log{}n)$ on average. Between the two, both offer good performance but they have different implementations and trade offs. I have chosen Quicksort over merge due to the fact that it is In-Place. This means that copies of the list are not created to sort it, making it more efficient in terms of memory.
 
-Writing my own sorting algorithm gives me greater flexibility as I am able to define what is the key that I am deriving my my entries. In my specific case, I have chosen to implement the QuickSort algorithm for sorting the entries based of the creation date of the entry. 
+Writing my own sorting algorithm gives me greater flexibility as I am able to define what is the key that I am deriving my my entries. In my specific case, I have chosen to implement the QuickSort algorithm for sorting the entries based of the creation date of the entry.
+
+Here a simple implementation I have written in Python based on the instructions from OCR A-Level Further Mathematics formula book \cite{ocr2019furthermaths}:
+\newpage
+\begin{figure}[H]
+    \begin{lstlisting}[language=Python]
+# my random array
+my_array = [3, 6, 8, 10, 1, 2, 1]
+
+def quicksort(array):
+    if len(array) == 0:
+        return array
+
+    pivot = array[0]
+    leftSubarray = []
+    rightSubarray = []
+
+    for element in array[1:]:
+        # iterating through the array starting from the second element to the end
+        if element < pivot:
+            leftSubarray.append(element)
+        else:
+            rightSubarray.append(element)
+
+    leftSubarray = quicksort(leftSubarray)
+    rightSubarray = quicksort(rightSubarray)
+
+    return leftSubarray + [pivot] + rightSubarray
+
+# testing the quicksort function
+print(quicksort(my_array))
+        \end{lstlisting}  
+        \caption{QuickSort Python Implementation}
+
+\end{figure}
+
 
 
 
 \section{User Interface}
 \subsection{Wireframe Design}
 
+\newpage
 % include figures of wireframe designs which takes up the bulk of the page
 \begin{figure}[H]
     \centering
@@ -186,6 +227,14 @@ Writing my own sorting algorithm gives me greater flexibility as I am able to de
     \caption{Profile page is where the user can view their profile information, as well as place where they can opt in for some additional features.}
 \end{figure}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Assets/statistics_page.png}
+    \caption{Statistics page is where the user can view statistics based on their journal entries pattern.}
+\end{figure}
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Assets/create_page.png}
@@ -200,11 +249,95 @@ Writing my own sorting algorithm gives me greater flexibility as I am able to de
 
 
 \section{RESTful API Endpoints}
+REST effectively allows my frontend application to directly interact with the server through HTTP requests. in this section I will document some of the endpoints I have created in my Django backend. One more thing to add is that I have used Django REST framework to create my API endpoints. This is a framework on top of Django specifically designed for creating RESTful APIs.
+
+\subsection{Serialization and deserialization of data}
+Serialization refers to the process of converting complex data type into a format that can easily be transmitted. For my case I need to break down the user object into a JSON format which can then be sent to and use in my frontend. Deserialization is the opposite process, where the JSON data is converted back into a complex data type. I would need to process the JSON data in the frontend, and the fact that I'm using javascript means that I can easily parse the JSON data, considering that JSON is a subset of JavaScript.
+
+\subsection{login}
+The login endpoint is used to authenticate the user. The user sends a POST request to the server with their email and password. The server then checks if the email and salted and hashed value of the password match with records in the database. If they do, the server generates a token and sends it back to the user. This token then can be used to authenticate future requests. For both login and register if successful serialized user data is sent back to the user along with the token.
+
+\subsection{register}
+Register is similar, but it is used to create a new user. The user sends a POST request with their email and password and other user information. The server first of perform sanity check on the format of the email via regex, then it checks if the email is already in use. If it is not, the server creates a new user with the email and password and sends back a token as well as other user details in the response.
+
+
+\subsection{get entries}
+This is the endpoint that retrieves all the entries of the user. The user sends a GET request, however the caveat is that the user must be authenticated and the generated token must be attached in teh header of the request. Because the user is validated, the server knows who this user is, and can then retrieve all the entries associated with this user through the foreign key relationship in the database. The server then sends back the entries in JSON format.
+
+\subsection{create entry}
+Create entry is used to create a new entry. The user sends a POST request with the title and content of the entry. For this method the user must also be authenticated. The server knows which user this is and through the one to one relationship between the user and the journal entry, the server can create a new entry and associate it with the user's journal. The server then sends back the status of the request. Otherwise it sends back an error message.
+
+\subsection{get statistics}
+This endpoint is used to obtain statistics about a user's journal. The server generate statistics based on the user's journal entries. 
+
+\section{Interface Logic}
+Here I have created flowcharts demonstrating how each of these web pages are suppose to function.
+
+\subsection{Login and Register Page}
+\begin{figure}[H]
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Assets/loginPageFlow.png}
+        \caption{Login Page}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{Assets/registerPageFlow.png}
+        \caption{Register Page}
+    \end{minipage}
+\end{figure}
+
+\subsection{Retrieve Entries Page}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Assets/retrievePageFlow.png}
+    \caption{Retrieve Entries Page}
+\end{figure}
+
+
+\subsection{Other}
+Create entries follow a similar design to login as it takes in user input and sends it to the server. The profile page is a page that displays the user's information, it reads of the data stored in my browser's storage then renders it. The home page is the first page the user sees when they visit the website. It includes buttons to navigate to other pages. 
+
+\section{Generating User Statistics}
+The statistics page renders the statistics generated by the server. The server use advance SQL queries to generate the statistics, and then sends it back to the user. Here I will be detailing the design of those queries.
+
+\subsection{SQL Queries}
+The exact implementation can be found in the Implementation section of the report. Here I will be detailing how the queries are structured and how they work.
+
+\subsubsection{Most Active Month}
+Here what happens is 
 
 
 \section{Hardware \& Software Requirements}
 Specify the hardware and software requirements for the project.
 
-\section{User Authentication}
-\subsection{Session Based Authentication}
-Session based authentication is where a session is generated and an ID is stored in the Cookie
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{10cm}|}
+    \hline
+    \textbf{Requirement ID} & \textbf{Description} \\ \hline
+    1 & Development Machine: Apple MacBook Pro 14-inch with M1 chip, 8 GB of RAM, and 256 GB SSD. This is more than sufficient for my development, React and Python are also well supported on Apple Silicone. \\ \hline
+    2 & Server for Deployment: Initially it could be configured with 2 vCPUs, 4 GB RAM, and 50 GB SSD storage which should be enough for the backend, it should also be easily scalable. \\ \hline
+    3 & End-User Devices: The app should be accessible on devices with internet connection and a web browser. This includes smartphone, laptop, even some smart IOT devices like your smart TV. \\ \hline
+    \end{tabular}
+    \caption{Hardware Requirements for Journal App}
+    \end{table}
+
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Requirement ID} & \textbf{Description} \\ \hline
+        1 & Development Environment: Visual Studio Code with the extensions for efficient coding. \\ \hline
+        2 & Terminal: I use Alacritty as my terminal emulator, the default shell on my device is zsh. \\ \hline
+        3 & Package Manager: Homebrew for macOS, very useful for installing new things for example postgres was installed through this. \\ \hline
+        4 & Database: PostgreSQL, as well as pgAdmin 4 for database administration and interaction. \\ \hline
+        5 & Backend Framework: Python, Django REST framework, which is also compatible with my database of choice. \\ \hline
+        6 & Frontend Technologies: Typescript, React, Vite.js. \\ \hline
+        7 & Version Control: Git for source code management, I use it to frequency commit my code, it is also synced with Github for backup. \\ \hline
+        8 & Deployment: Many options are available if I were to host my application, notably ones commonly used include Google Cloud, AWS, there are also ones built for easy deployment ones such as Railway, Heroku and Netlify. \\ \hline  
+        \end{tabular}
+        \caption{Software Requirements for Journal App}
+        \end{table}
+        

@@ -1,8 +1,113 @@
 % implementation.tex
 \chapter{Technical Implementation}
+In this section of my report, I will highlight section of my code with explanations. One thing I will also discuss is best practices and patterns that I have used in my project, such as defensive programming and modularity, etc.
+
+\section{File Structure}
+See the following of the tree structure of the project. This is created using the terminal tree command on a freshly cloned version of my repository so that only important files are shown:
+
+\subsection{Backend}
+\begin{verbatim}
+├── ERdiagram.png
+├── Email
+│   ├── __init__.py
+│   ├── apps.py
+│   ├── cron.py
+│   ├── sendEmail.py
+│   └── tests.py
+├── Entries
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── test.rest
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── JournalApp
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py
+│   └── wsgi.py
+├── README.md
+├── Users
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── signals.py
+│   ├── test.py
+│   ├── test.rest
+│   ├── urls.py
+│   ├── utils.py
+│   └── views.py
+├── manage.py
+├── package-lock.json
+├── package.json
+├── requirements.txt
+└── secret.json
+7 directories, 39 files
+\end{verbatim}
+
+\subsection{Frontend}
+\begin{verbatim}
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│   └── vite.svg
+├── src
+│   ├── App.css
+│   ├── App.tsx
+│   ├── api
+│   │   ├── axios.ts
+│   │   ├── getAuthTokenFromCookie.ts
+│   │   └── useApi.ts
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   └── layout
+│   │       ├── NavBar.css
+│   │       └── NavBar.tsx
+│   ├── context
+│   │   └── userContext.tsx
+│   ├── hooks
+│   │   ├── useAuth.ts
+│   │   ├── useFetchData.tsx
+│   │   ├── useUser.ts
+│   │   └── useUserContext.ts
+│   ├── index.css
+│   ├── main.tsx
+│   ├── pages
+│   │   ├── HomePage.tsx
+│   │   ├── ProfilePage.tsx
+│   │   ├── entry
+│   │   │   ├── CreateEntryPage.tsx
+│   │   │   ├── JournalEntriesPage.tsx
+│   │   │   └── sortEntries.ts
+│   │   ├── login
+│   │   │   ├── LoginPage.tsx
+│   │   │   └── useLoginAPI.tsx
+│   │   └── register
+│   │       └── RegisterPage.tsx
+│   └── vite-env.d.ts
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+15 directories, 36 files
+\end{verbatim}
 
 \section{Key Code Segments}
 Highlight essential code segments. 
+\subsection{Typing}
+
 
 \section{Data Structures}
 Explain the implementation of data structures.
@@ -11,6 +116,7 @@ Explain the implementation of data structures.
 Detail the implementation of algorithms.
 
 \section{Modularity}
+
 
 \subsection{Virtual Environment}
 Discuss the modularity of the project.
