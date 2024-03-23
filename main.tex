@@ -1,6 +1,5 @@
 \documentclass[11pt]{report}
 
-\usepackage{biblatex}
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
@@ -10,12 +9,16 @@
 \usepackage{longtable}
 \usepackage{verbatim}
 \usepackage{pmboxdraw}
+\usepackage{amsmath}
+\input{listcode.tex}
 
 
 
 \usepackage{listings}
 
-\addbibresource{bibliography.bib}
+% \addbibresource{bibliography.bib}
+\bibliographystyle{plain}
+\bibliography{bibliography}
 
 \begin{document}
 \title{Computing NEA - Journal App}
@@ -40,7 +43,7 @@
 
 
 \medskip
-\printbibliography
+
 
 \end{document}
     

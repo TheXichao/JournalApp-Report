@@ -115,6 +115,64 @@ Explain the implementation of data structures.
 \section{Algorithms}
 Detail the implementation of algorithms.
 
+\subsection{Implementation of the SQL Queries}
+To provide context, the following are the SQL queries that are implemented in the Django ORM as methods of the Journal model. This allow me to leverage powerful features of Python/Django enabling me to make more dynamic queries with ease. For example I can access the journal id of the current instance of the model using self.journal\_id, which can then be used directly in the query through string interpolation. In action, when a user accesses the API endpoint to get their journal statistics, self refers to user making the request. Therefore, the query will return the statistics of the journal that the user who just made that request. Having these as methods is also a good practice as it allows for better modularity and readability.
+
+
+\subsubsection{Most Active Month}
+\begin{lstlisting}[language=SQL]
+SELECT
+  EXTRACT(MONTH FROM "Entries_entry".creation_date) AS month,
+  COUNT(*) AS entry_count
+FROM
+  "Entries_entry"
+JOIN
+  "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
+WHERE
+  "Entries_journal".journal_id = {self.journal_id}
+GROUP BY
+  month
+ORDER BY
+  entry_count DESC
+LIMIT 1;
+\end{lstlisting}
+
+AS is used to alias the column names which makes the query more readable and efficient to write.
+
+\subsubsection{Average Entry Count Per Week}
+\begin{lstlisting}[language=SQL]
+  SELECT
+    AVG(entry_count)
+  FROM (
+    SELECT
+      EXTRACT(YEAR FROM "Entries_entry".creation_date) AS year,
+      EXTRACT(WEEK FROM "Entries_entry".creation_date) AS week,
+      COUNT(*) AS entry_count
+    FROM
+      "Entries_entry"
+    JOIN
+      "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
+    WHERE
+      "Entries_journal".journal_id = {self.journal_id}
+    GROUP BY
+      year, week
+  )
+\end{lstlisting}
+
+\subsubsection{Total Word Count}
+\begin{lstlisting}[language=SQL]
+SELECT
+    SUM(
+      LENGTH("Entries_entry".content) - LENGTH(REPLACE("Entries_entry".content, ' ', '')) + 1
+    ) AS total_word_count
+  FROM
+    "Entries_entry"
+  JOIN
+    "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
+  WHERE
+    "Entries_journal".journal_id = {self.journal_id};
+\end{lstlisting}
+
 \section{Modularity}
 
 

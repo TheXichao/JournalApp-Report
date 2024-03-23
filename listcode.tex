@@ -1,0 +1,68 @@
+% code_listing_config.tex
+\usepackage{listings}
+\usepackage{xcolor} % For custom colors
+
+% Custom color definitions
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{darkgreen}{rgb}{0.0,0.5,0.0}
+
+% Global listing style
+\lstset{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% Python style configuration
+\lstdefinestyle{myPython}{
+    language=Python,
+    morekeywords={self}, % Add any Python keywords not included by default here
+    otherkeywords={},
+    deletekeywords={...} % If there are any keywords you want to remove
+}
+
+% TSX (TypeScript with JSX) style configuration
+\lstdefinelanguage{TSX}{
+  morekeywords={break, continue, delete, else, for, function, if, in,
+    new, return, this, typeof, var, void, while, with, case, catch, default, do, finally, instanceof, switch, throw, try, class, constructor, enum, export, extends, false, import, null, super, true, implements, interface, let, package, private, protected, public, static, yield, any, boolean, number, string, symbol, void, type, from, as, namespace, readonly, async, await, of},
+  morekeywords={Array, Boolean, Date, Math, Number, String, Object, Set, Map, Promise, Generator, GeneratorFunction, Partial, Readonly, Pick, Record, Exclude, Extract, NonNullable, ReturnType, InstanceType, Required, ThisType, globalThis, JSX, ReactNode, ReactElement},
+  morekeywords={console, JSON, NaN, Infinity, undefined, null, eval, parseInt, parseFloat, decodeURI, decodeURIComponent, encodeURI, encodeURIComponent, ArrayBuffer, DataView, Float32Array, Float64Array, Int8Array, Int16Array, Int32Array, Uint8Array, Uint16Array, Uint32Array, Uint8ClampedArray, Blob, Document, DOMException, NodeList, Range, Text, Window, XMLHttpRequest, Element},
+  sensitive=true,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morecomment=[s]{/**}{*/}, % JavaDoc style comments
+  morestring=[b]',
+  morestring=[b]",
+  moredelim=*[s][\color{codepurple}]{<}{>},
+  moredelim=[is][\textcolor{darkblue}]{\%\%}{\%\%},
+  moredelim=[is][\textcolor{darkgreen}]{\{\{}{\}\}},
+  stringstyle=\color{codepurple},
+}
+
+
+% Shortcut for including Python code from a file
+\newcommand{\includepython}[1]{
+\lstinputlisting[style=myPython]{#1}
+}
+
+% Shortcut for including TSX code from a file
+\newcommand{\includetsx}[1]{
+\lstinputlisting[language=TSX]{#1}
+}
