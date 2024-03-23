@@ -105,42 +105,132 @@ See the following of the tree structure of the project. This is created using th
 \end{verbatim}
 
 \section{Key Code Segments}
-Highlight essential code segments. 
-\subsection{Typing}
+In this section, I will be highlighting key code segments from my project which I believe are important to understand the implementation of the project. To provide context, the source code from where these snippets are taken from are also provided in the appendix.
 
 
 \section{Data Structures}
-Explain the implementation of data structures.
 
-\section{Algorithms}
-Detail the implementation of algorithms.
+\subsection{Data Models}
+Data models are the backbone of my backend server. In my design section I have already discussed the data models that I have used in my project. Here I will provide the implementation of the data models in Django.
 
-\subsection{Implementation of the SQL Queries}
-To provide context, the following are the SQL queries that are implemented in the Django ORM as methods of the Journal model. This allow me to leverage powerful features of Python/Django enabling me to make more dynamic queries with ease. For example I can access the journal id of the current instance of the model using self.journal\_id, which can then be used directly in the query through string interpolation. In action, when a user accesses the API endpoint to get their journal statistics, self refers to user making the request. Therefore, the query will return the statistics of the journal that the user who just made that request. Having these as methods is also a good practice as it allows for better modularity and readability.
+\subsubsection{Modelling the User}
+\begin{minted}{python3}
+  from django.db import models
+  from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
+  
+  from .utils import clean_email, hash_password, validate_email, verify_password
+  
+  # Create your models here.
+  
+  
+  def check_email_and_password(email: str, password: str | None) -> bool:
+      if password is None:
+          raise ValueError("Password is not valid")
+      if not validate_email(email):
+          raise ValueError("Email is not valid")
+      return True
+  
+  
+  class MyUserManager(UserManager):
+      def create_user(self, email, password=None, **extra_fields):
+          cleaned_email = clean_email(email)
+          is_valid = check_email_and_password(cleaned_email, password)
+          if is_valid:
+              user = self.model(email=cleaned_email, **extra_fields)
+              user.set_password(password)
+              user.save()
+  
+      def create_superuser(self, email, password=None, **extra_fields):
+          cleaned_email = clean_email(email)
+          is_valid = check_email_and_password(cleaned_email, password)
+          if is_valid:
+              user = self.model(email=cleaned_email, **extra_fields)
+              user.set_password(password)
+              user.is_staff = True
+              user.is_superuser = True
+              user.save()
+  
+  
+  class MyUser(AbstractBaseUser, PermissionsMixin):
+      """A Users table used to store the data of my user a subclass implementing the default User model"""
+  
+      user_id = models.AutoField(primary_key=True)
+      email = models.EmailField(unique=True)
+      is_staff = models.BooleanField(default=False)
+      creation_date = models.DateField(auto_now_add=True)
+      first_name = models.CharField(max_length=30, null=True)
+      last_name = models.CharField(max_length=30, null=True)
+      email_prompt = models.BooleanField(default=False, null=True)
+  
+      # By convention, the manager attribute are named objects.
+      objects = MyUserManager()
+  
+      USERNAME_FIELD = "email"
+      REQUIRED_FIELDS = ["first_name", "last_name"]
+  
+      def get_full_name(self) -> str:
+          return f"{self.first_name} {self.last_name}"
+  
+      def set_password(self, raw_password: str) -> None:
+          self.password = hash_password(raw_password)
+  
+      def check_password(self, raw_password: str) -> bool:
+          return verify_password(raw_password, self.password)
+  
+\end{minted}
+To improve maintainability and readability, I have defined many helper functions in a separate file called utils.py. This is a good practice and in my codebase I try to follow the Single Responsibility Principal as much as possible. This makes the code more self contained, and also makes it easier to perform unit tests on the helper functions. In the code included in the appendix it will contain all the relevant codes relating to what I talk about in this section of the report.
 
-
-\subsubsection{Most Active Month}
-\begin{lstlisting}[language=SQL]
-SELECT
-  EXTRACT(MONTH FROM "Entries_entry".creation_date) AS month,
-  COUNT(*) AS entry_count
-FROM
-  "Entries_entry"
-JOIN
-  "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
-WHERE
-  "Entries_journal".journal_id = {self.journal_id}
-GROUP BY
-  month
-ORDER BY
-  entry_count DESC
-LIMIT 1;
-\end{lstlisting}
-
-AS is used to alias the column names which makes the query more readable and efficient to write.
-
-\subsubsection{Average Entry Count Per Week}
-\begin{lstlisting}[language=SQL]
+\subsubsection{Modelling the Journal and Entries}
+\begin{minted}{python3}
+  from email.policy import default
+  from django.db import models, connection
+  from Users.models import MyUser
+  from django.utils import timezone
+  
+  # sentiment analysis
+  from google.cloud import language_v2
+  
+  
+  # Create your models here.
+  
+  
+  class Journal(models.Model):
+      """A Journals table pointing to the owner used to link entries together with the user"""
+  
+      journal_id = models.AutoField(primary_key=True)
+      user_id = models.OneToOneField(MyUser, on_delete=models.CASCADE)
+      creation_date = models.DateField(auto_now_add=True)
+  
+      def get_all_entries(self):
+          return self.entry_set.all()
+  
+      def get_most_active_month(self):
+          with connection.cursor() as cursor:
+              cursor.execute(
+                  f"""
+  SELECT
+    EXTRACT(MONTH FROM "Entries_entry".creation_date) AS month,
+    COUNT(*) AS entry_count
+  FROM
+    "Entries_entry"
+  JOIN
+    "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
+  WHERE
+    "Entries_journal".journal_id = {self.journal_id}
+  GROUP BY
+    month
+  ORDER BY
+    entry_count DESC
+  LIMIT 1;
+                  """
+              )
+              row = cursor.fetchone()
+              return row[0] if row else None
+  
+      def get_average_entries_per_week(self):
+          with connection.cursor() as cursor:
+              cursor.execute(
+                  f"""
   SELECT
     AVG(entry_count)
   FROM (
@@ -157,10 +247,109 @@ AS is used to alias the column names which makes the query more readable and eff
     GROUP BY
       year, week
   )
-\end{lstlisting}
+  LIMIT 1; 
+                  """
+              )
+              row = cursor.fetchone()
+              return row[0] if row else None
+  
+      def get_total_word_count(self):
+          with connection.cursor() as cursor:
+              cursor.execute(
+                  f"""
+  SELECT
+    SUM(
+      LENGTH("Entries_entry".content) - LENGTH(REPLACE("Entries_entry".content, ' ', '')) + 1
+    ) AS total_word_count
+  FROM
+    "Entries_entry"
+  JOIN
+    "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
+  WHERE
+    "Entries_journal".journal_id = {self.journal_id};
+                  """
+              )
+              row = cursor.fetchone()
+              return row[0] if row else None
+  
+      def __str__(self):
+          return f"{self.user_id}'s Journal"
+  
+  
+  class Entry(models.Model):
+      """An Entry table used to store the data of t journal entry and also tell us which journal it belongs to"""
+  
+      entry_id = models.AutoField(primary_key=True)
+      journal_id = models.ForeignKey("Journal", on_delete=models.CASCADE)
+      creation_date = models.DateField(default=timezone.now, editable=True)
+      title = models.CharField(max_length=50, default="Untitled")
+      content = models.TextField()
+      sentiment = models.FloatField(default=None, blank=True, null=True)
+  
+      def __str__(self) -> str:
+          return f"Entry {self.entry_id} from {self.journal_id}"
+  
+      # analyse data and return sentiment score range from -1 to 1 by calling google cloud api
+      def analyse_sentiment(self) -> float:
+          client = language_v2.LanguageServiceClient()
+          document = language_v2.Document(
+              content=self.content, type_=language_v2.Document.Type.PLAIN_TEXT
+          )
+          response = client.analyze_sentiment(request={"document": document})
+          return response.document_sentiment.score
+\end{minted}
+
+
+
+\section{Algorithms}
+Detail the implementation of algorithms.
+
+\subsection{Implementation of the SQL Queries}
+To provide context, the following are the SQL queries that are implemented in the Django ORM as methods of the Journal model. This allow me to leverage powerful features of Python/Django enabling me to make more dynamic queries with ease. For example I can access the journal id of the current instance of the model using self.journal\_id, which can then be used directly in the query through string interpolation. In action, when a user accesses the API endpoint to get their journal statistics, self refers to user making the request. Therefore, the query will return the statistics of the journal that the user who just made that request. Having these as methods is also a good practice as it allows for better modularity and readability.
+
+
+\subsubsection{Most Active Month}
+\begin{minted}{SQL}
+SELECT
+  EXTRACT(MONTH FROM "Entries_entry".creation_date) AS month,
+  COUNT(*) AS entry_count
+FROM
+  "Entries_entry"
+JOIN
+  "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
+WHERE
+  "Entries_journal".journal_id = {self.journal_id}
+GROUP BY
+  month
+ORDER BY
+  entry_count DESC
+LIMIT 1;
+\end{minted}
+
+AS is used to alias the column names which makes the query more readable and efficient to write.
+
+\subsubsection{Average Entry Count Per Week}
+\begin{minted}{SQL}
+  SELECT
+    AVG(entry_count)
+  FROM (
+    SELECT
+      EXTRACT(YEAR FROM "Entries_entry".creation_date) AS year,
+      EXTRACT(WEEK FROM "Entries_entry".creation_date) AS week,
+      COUNT(*) AS entry_count
+    FROM
+      "Entries_entry"
+    JOIN
+      "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
+    WHERE
+      "Entries_journal".journal_id = {self.journal_id}
+    GROUP BY
+      year, week
+  )
+\end{minted}
 
 \subsubsection{Total Word Count}
-\begin{lstlisting}[language=SQL]
+\begin{minted}{SQL}
 SELECT
     SUM(
       LENGTH("Entries_entry".content) - LENGTH(REPLACE("Entries_entry".content, ' ', '')) + 1
@@ -171,10 +360,10 @@ SELECT
     "Entries_journal" ON "Entries_journal".journal_id = "Entries_entry".journal_id_id
   WHERE
     "Entries_journal".journal_id = {self.journal_id};
-\end{lstlisting}
+\end{minted}
 
 \section{Modularity}
-
+Modularity is shown throughout my codebase.
 
 \subsection{Virtual Environment}
 Discuss the modularity of the project.
