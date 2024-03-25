@@ -5,49 +5,6 @@ In this section of my report, I will highlight section of my code with explanati
 \section{File Structure}
 See the following of the tree structure of the project. This is created using the terminal tree command on a freshly cloned version of my repository so that only important files are shown:
 
-
-
-
-\begin{table}[H]
-\centering
-\caption{Group A Skills, Found in the Project (skills include all of Models and most of Algorithms)}
-\begin{tabularx}{\textwidth}{|X|X|}
-\hline
-\textbf{Group A Skill} & \textbf{Found in} \\
-\hline
-Complex data model in database (eg several interlinked tables) & These models are found in the implementation of my backend \\
-\hline
-Hash tables, lists, stacks, queues, graphs, trees or structures of equivalent standard &  \\
-\hline
-Files(s) organised for direct access &  Shown in this section\\
-\hline
-Complex scientific/mathematical/robotics/control/business model & User session persistance as an example complex control model \\
-\hline
-Complex user-defined use of object-orientated programming (OOP) model, eg classes, inheritance, composition, polymorphism, interfaces & Created upon user's registration and also defined when new entries are created.  \\
-\hline
-Complex client-server model & Flow of data between frontend application and backend via RESTful API \\
-\hline
-Cross-table parameterised SQL & Used throughout due to the relationship between my models (design detailed in the previous section) \\
-\hline
-Aggregate SQL functions & Used when gathering statistics about user's journal\\
-\hline
-List operations & the journal is handled as an array of entries in the frontend, \\
-\hline
-Hashing & Hashing, salting of password for storage as well as validating the user password by comparing hash \\
-\hline
-Recursive algorithms &  Used for the implementation of sorting algorithm \\
-\hline
-Mergesort or similarly efficient sort &  \\
-\hline
-Dynamic generation of objects based on complex user-defined use of OOP model &  \\
-\hline
-Server-side scripting using request and response objects and server-side extensions for a complex client-server model & Fundamental to my application as this is used betwe \\
-\hline
-Calling parameterised Web service APIs and parsing JSON/XML to service a complex client-server model  &  \\
-\hline
-\end{tabularx}
-\end{table}
-
 \subsection{Backend}
 \begin{verbatim}
 ├── ERdiagram.png
@@ -137,7 +94,6 @@ Calling parameterised Web service APIs and parsing JSON/XML to service a complex
 │   │   │   └── sortEntries.ts
 │   │   ├── login
 │   │   │   ├── LoginPage.tsx
-│   │   │   └── useLoginAPI.tsx
 │   │   └── register
 │   │       └── RegisterPage.tsx
 │   └── vite-env.d.ts
@@ -147,6 +103,100 @@ Calling parameterised Web service APIs and parsing JSON/XML to service a complex
 15 directories, 36 files
 \end{verbatim}
 
+\section{Skills}
+
+\begin{table}[ht]
+  \centering
+  \caption{Group A Model Skills Employed in Journal App Development}
+  \begin{tabular}{|p{10cm}|p{4cm}|}
+  \hline
+  \textbf{Model Skill} & \textbf{Found in} \\
+  \hline
+  Complex data model in database (eg several interlinked tables) & Users/models.py and Entries/models.py from the Django project.\\
+  \hline
+  Hash tables, lists, stacks, queues, graphs, trees or structures of equivalent standard &  Retrieved (from backend/local storage) entries are stored as an array. \\
+  \hline
+  Files(s) organised for direct access & Shown  above \\
+  \hline
+  Complex scientific/mathematical/robotics/control/business model & User session persistance as an example complex control model\\
+  \hline
+  Complex user-defined use of object-orientated programming (OOP) model, eg classes, inheritance, composition, polymorphism, interfaces & UML diagram in figure \ref{fig:UML} is fully implemented. \\
+  \hline
+  Complex client-server model & Flow of data between frontend application and backend via RESTful API  \\
+  \hline
+  \end{tabular}
+  \end{table}
+
+
+  \begin{table}[ht]
+    \centering
+    \caption{Group A Algorithms Skills Employed}
+    \begin{tabular}{|p{10cm}|p{4cm}|}
+    \hline
+    \textbf{Algorithm Skill} & \textbf{Found in} \\
+    \hline
+    Cross-table parameterised SQL & \\
+    \hline
+    Aggregate SQL functions &  \\
+    \hline
+    List operations &  List of entries sorted and displayed in retrieveEntries page\\
+    \hline
+    Hashing & found in utils.py\\
+    \hline
+    Recursive algorithms & sorting  \\
+    \hline
+    Mergesort or similarly efficient sort &  \\
+    \hline
+    Dynamic generation of objects based on complex user-defined use of OOP model & \\
+    \hline
+    Server-side scripting using request and response objects and server-side extensions for a complex client-server model &  \\
+    \hline
+    Calling parameterised Web service APIs and parsing JSON/XML to service a complex client-server model &  \\
+    \hline
+    \end{tabular}
+    \end{table}
+
+\begin{table}[H]
+\centering
+\caption{Group A Skills Found in the Project (which include all the Models and most of Algorithms listed)}
+\begin{tabular}{|p{0.6\textwidth}|p{0.4\textwidth}|}
+\hline
+\textbf{Group A Skill} & \textbf{Found in} \\
+\hline
+\textbf{Models} \\ \hline
+Complex data model in database (eg several interlinked tables) & These models are found in the implementation of my backend \\
+\hline
+Hash tables, lists, stacks, queues, graphs, trees or structures of equivalent standard &  \\
+\hline
+Files(s) organised for direct access &  File Structure shown above\\
+\hline
+Complex scientific/mathematical/robotics/control/business model & User session persistance as an example complex control model \\
+\hline
+Complex user-defined use of object-orientated programming (OOP) model, eg classes, inheritance, composition, polymorphism, interfaces & Created upon user's registration and also defined when new entries are created.  \\
+\hline
+Complex client-server model & Flow of data between frontend application and backend via RESTful API \\
+\hline
+Cross-table parameterised SQL & Used throughout due to the relationship between my models (design detailed in the previous section) \\
+\hline
+Aggregate SQL functions & Used when gathering statistics about user's journal\\
+\hline
+List operations & the journal is handled as an array of entries in the frontend, \\
+\hline
+Hashing & Hashing, salting of password for storage as well as validating the user password by comparing hash \\
+\hline
+Recursive algorithms &  Used for the implementation of sorting algorithm \\
+\hline
+Mergesort or similarly efficient sort &  \\
+\hline
+Dynamic generation of objects based on complex user-defined use of OOP model &  \\
+\hline
+Server-side scripting using request and response objects and server-side extensions for a complex client-server model & Fundamental to my application as this is used betwe \\
+\hline
+Calling parameterised Web service APIs and parsing JSON/XML to service a complex client-server model  &  \\
+\hline
+\end{tabular}
+\end{table}
+
 \section{Key Code Segments}
 In this section, I will be highlighting key code segments from my project which I believe are important to understand the implementation of the project. To provide context, the source code from where these snippets are taken from are also provided in the appendix.
 
@@ -154,7 +204,7 @@ In this section, I will be highlighting key code segments from my project which 
 \section{Data Structures}
 
 \subsection{Data Models}
-Data models are the backbone of my backend server. In my design section I have already discussed the data models that I have used in my project. Here I will provide the implementation of the data models in Django.
+Data models are the backbone of my backend server. In my design section (see figure \ref{fig:UML} for the UML diagram)I have already discussed the data models that I have used in my project. Here I will provide the implementation of the data models in Django.
 
 \subsubsection{Modelling the User}
 \begin{minted}{python3}
@@ -221,10 +271,9 @@ Data models are the backbone of my backend server. In my design section I have a
           return verify_password(raw_password, self.password)
   
 \end{minted}
-To improve maintainability and readability, I have defined many helper functions in a separate file called utils.py. This is a good practice and in my codebase I try to follow the Single Responsibility Principal as much as possible. This makes the code more self contained, and also makes it easier to perform unit tests on the helper functions. In the code included in the appendix it will contain all the relevant codes relating to what I talk about in this section of the report.
+To improve maintainability and readability, I have defined many helper functions in a separate file called utils.py. This is an example of decomposition and in my codebase I try to follow the Single Responsibility Principal as much as possible. This makes the code more self contained, and also makes it easier to perform unit tests on the helper functions. In the code included in the appendix it will contain all the relevant codes relating to what I talk about in this section of the report.
 
 
-TODO: Explain the code above and below.
 \subsubsection{Modelling the Journal and Entries}
 \begin{minted}{python3}
   from email.policy import default
@@ -343,11 +392,47 @@ TODO: Explain the code above and below.
           response = client.analyze_sentiment(request={"document": document})
           return response.document_sentiment.score
 \end{minted}
-TODO: add interfaces 
+
+\subsection{Generated diagram}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{SourceCode/backend/ERdiagram.png}
+  \caption{Here is a diagram generated based off my implemented Django Models using the django-extensions library}
+  \label{fig:ERdiagram}
+\end{figure}
+
+\subsection{Typescript Interfaces}
+To model JSON response provided by the backend, I have created interfaces in Typescript. This is useful as it allows me to have type checking in my codebase. This is especially useful when I am making API calls to the backend and I want to ensure that the data I am receiving correctly matches the data I am expecting. Here are a few examples of interfaces that I have created in my frontend more can be found in source code:
+
+\begin{minted}{typescript}
+  export interface Entry {
+  entry_id: number;
+  title: string;
+  content: string;
+  creation_date: string;
+}
+\end{minted}
+\begin{minted}{typescript}
+  interface registerRequestData {
+  email: string;
+  password: string;
+  first_name: string;
+  last_name: string;
+}
+\end{minted}
+
+\begin{minted}{typescript}
+export interface Statistics {
+  most_active_month: string;
+  average_entries_per_week: number;
+  total_word_count: number;
+}
+\end{minted}
+
 
 
 \section{Algorithms}
-Detail the implementation of algorithms.
 
 TODO: include sorting algorithms
 
@@ -450,12 +535,15 @@ export default function useApi<T>(
       return { isLoading, error, data, fetchData };
     }
 \end{minted}
-I have created useApi hook because whenever I make a call to the backend, I want to be able to retrieve information about wether the call is loading, if there is an error, and the data that is returned. This piece of code is built on top of the Axios library which is a promised\footnote{Promise is an asynchronous operation that can either succeed or fail. }  based library for HTTP requests. A promise exists in one of three states: pending, fulfilled, or rejected. See my implementation to see how extract additional information from my call.
+I have created useApi hook because whenever I make a call to the backend, I want to be able to retrieve information about wether the call is loading, if there is an error, and the data that is returned. These information are valuable as they can be used to conditionally render different information to the user. 
 
-A generic interface is used to define the return type of the hook. This is useful since it increases the reusability of the module. 
+This piece of code is built on top of the Axios library which is a promised\footnote{Promise is an asynchronous operation that can either succeed or fail. }  based library for HTTP requests. A promise exists in one of three states: pending, fulfilled, or rejected. See my implementation to see how extract additional information from my call.
 
-TODO: finish explaining
-A callback function is 
+To implement this feature, I have used try-catch block to handle the promise. If the promise is fulfilled, the data is stored in the data state, if the promise is rejected, the error is stored in the error state. Finally, the isLoading state is set to false to indicate that the fetch is complete. This is also an example of defensive programming.
+
+A generic interface is used to define the return type of the hook. This is useful since it increases the reusability of the module. I can simply pass in an appropriate interface when I call the hook (like the ones I listed earlier).
+
+There are many rules when using hooks, one of those is that I cannot define a hook inside an a function. This is why I have made use of the useCallback function so that I can trigger the fetchData function whenever I need to make an API call. The fetchData function acts as my trigger and they are typically used when users press a button or when the page loads. As example is shown in the RegisterPage.tsx below.
 
 \subsubsection{from axios.ts}
 \begin{minted}{typescript}
@@ -579,10 +667,19 @@ export default function RegisterPage(): JSX.Element {
   );
 }
 \end{minted}
-TODO: Explain the code above.
-This is the example of using my useApi hook. The versatility is demonstrated here .....
+Before the button is clicked I have made use of the useState hook to store the user's input, and as they user types in the input field, the state is updated.
+
+In this example by using my useApi hook, as the button is clicked (see line 102), onRegisterFunc is called which triggers the fetchData function, which activates my logic of the useApi call, submitting all the information stored in my states to my backend. My useApi function provide live feedback about the state of the fetch as it happens, and that information can help me dynamically display information to the user.
+
+In line 99, I have set disabled to isLoading so that the button is disabled when the fetch is loading, which is a defensive programming technique to prevent multiple clicks on the button. 
+
+In addition see line 86 for a couple of examples of how I conditionally render different information based on the state of the fetch. Conditional rendering is another technique I employed throughout my frontend to provide a better user experience as well as to defensively program my application.
 
 \subsection{Persistent Login Session}
+To enable persistent login session in my React app, browser's local storage as well as context is used. Context is used so that the user's information can be stored an accessed throughout the application, avoiding the need of prop drilling\footnotetext{In react information is passed through components from parent to child, Prop Drilling is when a certain pieces of information is passed through many components. This is bad practice as it clogs up the code making it difficult to maintain.}. 
+
+
+
 
 \subsubsection{useUser.ts}
 \begin{minted}{typescript}
@@ -628,8 +725,10 @@ export default function useUser() {
     }
 }
 \end{minted}
+useUser is a hook I have defined that governs the storage and retrieval of user information. It is used to store the user's information in the user's browser in the form of cookies\footnotetext{I have chosen cookies instead of local storage for security reasons, see defensive programming section.}, and also to retrieve the user's information storage. This is useful as it allows me to persist even if the user closes the tab or refreshes. Cookie configuration is also set to be secure and sameSite to strict to prevent CSRF attacks.
 
-TODO: Explain the code above.
+See line 29 and 23, the context is also updated at the same time the cookie is updated. This is to ensure that the user's information is accessible throughout the application.
+
 
 \subsubsection{userContext.tsx}
 \begin{minted}{typescript}
@@ -675,7 +774,48 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 };
 \end{minted}
 
-TODO: Explain the code above.
+
+\subsubsection{useUserContext.ts}
+\begin{minted}{typescript}
+import { useContext} from "react";
+import { UserContext, UserContextType  } from "../context/userContext";
+
+export default function useUserContext() {
+    const context = useContext(UserContext) as UserContextType;
+
+    if (context === undefined) {
+        throw new Error("useUser must be used within a UserProvider");
+    }
+
+    return context;
+
+}
+\end{minted}
+
+As you can see here in my provider I have user and updateUser as the context value, these are the two functions that are used to retrieve and update the user's information. I have created a useUserContext hook to access the context to make the code clearer and more modular.
+
+
+\subsubsection{main.tsx}
+\begin{minted}{typescript}
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+import { UserProvider } from "./context/userContext.tsx";
+// import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <UserProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </UserProvider>
+  </React.StrictMode>
+);
+\end{minted}
+This is the entry point of my application. I have wrapped my entire app components and routes in the UserProvider so that the user's information can be accessed throughout the entire application.
 
 \subsubsection{useAuth.ts}
 \begin{minted}{typescript}
@@ -702,30 +842,8 @@ export default function useAuth() {
         logout,
         isAuthenticated
     }}
-
 \end{minted}
-
-TODO: Explain the code above.
-
-\subsubsection{useUserContext.ts}
-\begin{minted}{typescript}
-import { useContext} from "react";
-import { UserContext, UserContextType  } from "../context/userContext";
-
-export default function useUserContext() {
-    const context = useContext(UserContext) as UserContextType;
-
-    if (context === undefined) {
-        throw new Error("useUser must be used within a UserProvider");
-    }
-
-    return context;
-
-}
-\end{minted}
-
-
-TODO: Explain the code above.
+useAuth is used to login and logout the user. These are created to make the code more modular as it uses the useUser to perform certain actions on the user's information. This is also an example of the Single Responsibility Principal as the useAuth hook is only responsible for authentication and nothing else.
 
 
 
@@ -733,36 +851,125 @@ TODO: Explain the code above.
 
 
 \subsection{Virtual Environment}
-Discuss the modularity of the project.
+Virtual environment is used to manage the dependencies of the project. This is useful as it allows me to keep the dependencies of the project separate from the dependencies of the system. I have also included the requirements for both the django and react app in the root of the projects. This is also useful for deployment as it allows me to easily deploy the project on a server without having to worry about the dependencies.
 
 \section{Defensive Programming / Robustness}
-Explain the measures taken for defensive programming and robustness.
+This section I will be discussing the defensive programming techniques and preventions I have implemented in my project to ensure that the application is robust and secure.
 
-TODO: Sanity checking
-TODO: Error handling
-TODO: Input validation
-TODO: Authentication and Authorization
-TODO: CSRF
-TODO: Token Authentication/ Session Management
-TODO: XSS (cookies vs local storage)
-TODO: SQL Injection
-TODO: Password Hashing
-TODO: Rate Limiting
-TODO: CORS
-
-TODO: secret key management
-
-\subsubsection{Cross Site Request Forgery (CSRF)}
-
-\subsection{Server Based Authentication}
-\subsubsection{Cross-Site Scripting (XSS)}
+\subsection{Sanity checking}
+\begin{minted}{python3}
+import re
+def validate_email(email: str) -> bool:
+  return re.match(r"[^@]+@[^@]+\.[^@]+", email) is not None
 
 
-\section{Patterns}
-\subsection{Single Responsibility Principal}
+def clean_email(email: str) -> str:
+cleaned_email = re.search(r"[^@]+@[^@]+\.[^@]+", email)
+if cleaned_email is not None:
+    parsed_email =  cleaned_email.group(0)
+    return parsed_email.lower().strip()
+else:
+    return ""
+\end{minted}
+These functions are used in the User model to validate and clean the email before it is stored in the database. The regex ensures the email format is in the form of email in correct. This simple regex basically want to ensure that the email is in the form of a@b.c where a, b, c are characters that are not @. This is a simple form of input validation to ensure that the email is in the correct format before it is stored in the database.
+
+For cleaning the data I extract the text matching that regex then convert it into lower case and strip any leading or trailing whitespace. This is to ensure that the email is stored in a consistent format in the database.
+
+\subsection{Password Hashing}
+\begin{minted}{python3}
+import hashlib
+import os
 
 
-\section{Credential Management}
+def hash_password(password: str) -> str:
+    salt = os.urandom(16)
+    salted_password = salt + password.encode("utf-8")
+
+    sha256_hash = hashlib.sha256()
+    sha256_hash.update(salted_password)
+    hashed_password = sha256_hash.hexdigest()
+
+    return f"{salt.hex()}:{hashed_password}"
 
 
-TODO: compare against spec for group A skills
+def verify_password(password: str, hashed_password: str) -> bool:
+    salt, stored_hash = hashed_password.split(":")
+
+    salted_password = bytes.fromhex(salt) + password.encode("utf-8")
+    sha256_hash = hashlib.sha256()
+    sha256_hash.update(salted_password)
+    provided_hash = sha256_hash.hexdigest()
+
+    return provided_hash == stored_hash
+
+\end{minted}
+A salt is basically a random string that is added to the password before it's hashed and it prevents same password having the same hash value, hence reducing the risk of a dictionary attack or rainbow table attack. In my database I store the salt and the hashed password in the format salt(in hex):hashed\_password. This is to ensure that the salt is stored along with the password so that it can be used to verify the password when the user logs in.
+
+Verify password is used to verify the password when the user logs in. It basically takes the input password, hash it with the stored salt and see if the hashes match. If they match then the password is correct, if not then the password is incorrect.
+
+\subsection{SQL Injection}
+SQL injection is protected in my codebase as I have used Django's ORM to make queries to the database. Django's ORM automatically escapes the input to prevent SQL injection. This prevents malicious users from injecting SQL code into the database. 
+
+\subsection{Cross Site Request Forgery (CSRF)}
+To prevent CSRF attacks, Django has a built in middleware that checks the csrf token in the request. This is enabled by default in Django and is used to prevent CSRF attacks. This is a good practice as it prevents malicious users from making requests on behalf of the user.
+
+\subsection{Cookies vs Local Storage}
+Sensitive information like user data and authentication tokens are stored in cookies instead of local storage. This is because cookies are more secure than local storage, because Local storage is vulnerable to XSS attacks, while cookies are not. 
+
+For retrieved journal entries however, I have used local storage as it is not sensitive information. Each website has access to 5MB of data that can be stored in local storage, so caching the journal entries in local storage is a good practice as it reduces the number of requests made to the server.
+
+\subsection{Rate Limiting}
+\begin{minted}{python3}
+  # from JournalApp/settings.py
+  REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "8/minute",
+        "user": "30/minute",
+    },
+}
+\end{minted}
+With Django Rest Framework, I can configure the rate limit of the API to prevent DoS attacks. In this example, I have set the rate limit to 8 requests per minute for anonymous users and 30 requests per minute for authenticated users. 
+
+\subsection{secret key management}
+I have stored my sensitive details like login or keys in a secret.json file, which is included in my gitignore file. This is to prevent the secret key from being exposed in the repository. 
+
+\section{Error Handling}
+Error handling is used throughout my application, here's a typical example from Users/views.py:
+
+\begin{minted}{python3}
+  @api_view(["POST"])
+  def login_view(request) -> Response:
+      try:
+          user = MyUser.objects.get(email=request.data["email"])
+          if user.check_password(request.data["password"]):
+              token, created = Token.objects.get_or_create(user=user)
+              user_data = MyUserSerializer(user).data
+              user_data["token"] = token.key
+              response_data = {
+                  "user_id": user.user_id,
+                  "email": user.email,
+                  "first_name": user.first_name,
+                  "last_name": user.last_name,
+                  "authToken": token.key,
+              }
+              return Response(response_data, status=status.HTTP_200_OK)
+          else:
+              return Response(
+                  {"error": "Invalid password"}, status=status.HTTP_400_BAD_REQUEST
+              )
+  
+      except MyUser.DoesNotExist:
+          return Response(
+              {"error": "User does not exist"}, status=status.HTTP_404_NOT_FOUND
+          )
+\end{minted}
+
+
