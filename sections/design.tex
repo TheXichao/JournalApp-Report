@@ -150,11 +150,12 @@ For my purpose I will implement the sorting based on the entry submission date, 
 
 Choosing an effective algorithm can improve responsiveness of the application and it can especially do so for long term users of the application who might have a large number of entries in their journal.
 
-Sorting algorithms like bubble sort and insertion sort are bad for large datasets since they have a time complexity of O(\(n^2\)) on average. Hence, I will be choosing an efficient sorting algorithm such as Quicksort or Merge Sort, two divide and conquer algorithms, which have a time complexity of $O(n\log{}n)$ on average. Between the two, both offer good performance but they have different implementations and trade offs. I have chosen Quicksort over merge due to the fact that it is In-Place. This means that copies of the list are not created to sort it, making it more efficient in terms of memory.
+Bubble sort is a simple algorithm however it has both terrible time complexity making it unsuitable for large datasets. A divide-and-conquer algorithm is more suitable for my purpose since they are generally more efficient. At first I had chosen and implemented the QuickSort algorithm in my code since I imagined that quicksort would be efficient as it has an average time complexity of O(n log n). However, I am now rewriting my design now to use Timsort instead. This is because I realised that the entries after retrieved from my database, would be in a structured and near sorted format. Since timsort is partially insertion sort gives it the benefit of being efficient for near sorted data, and the fact it's partially merge sort gives it the benefit of being efficient for large lists of entries. Check out \href{https://www.toptal.com/developers/sorting-algorithms}{this} graphic for a comparison of sorting algorithms.
 
-Writing my own sorting algorithm gives me greater flexibility as I am able to define what is the key that I am deriving my my entries. In my specific case, I have chosen to implement the QuickSort algorithm for sorting the entries based of the creation date of the entry.
+TODO: edit from quicksort to timsort
+Writing my own sorting algorithm gives me greater flexibility as I am able to define what is the key that I am deriving my my entries. In my specific case, I have chosen to implement the QuickSort algorithm for sorting the entries based of the creation date of the entry. 
 
-Here a simple implementation I have written in Python based on the instructions from OCR A-Level Further Mathematics formula book \cite{ocr2019furthermaths}:
+Here a simple implementation I have written in Python based on the instructions from OCR A-Level Further Mathematics formula book \cite{ocr2019furthermaths}, which is the first algorithm I have implemented in my project. The code is as follows:
 \newpage
 \begin{figure}[H]
 \begin{minted}{python3}
@@ -165,12 +166,13 @@ def quicksort(array):
     if len(array) == 0:
         return array
 
+    # the pivot point can either be the first element or the last element by convention
     pivot = array[0]
     leftSubarray = []
     rightSubarray = []
 
     for element in array[1:]:
-        # iterating through the array starting from the second element to the end
+        # iterating through the array starting from the second element to the end (because I set the pivot to be the first element, otherwise I would iterate from the first element to the second last element)
         if element < pivot:
             leftSubarray.append(element)
         else:
@@ -185,8 +187,11 @@ def quicksort(array):
 print(quicksort(my_array))
 \end{minted}
         \caption{QuickSort Python Implementation}
-
 \end{figure}
+
+
+
+
 
 
 

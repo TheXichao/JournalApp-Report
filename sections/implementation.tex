@@ -5,6 +5,49 @@ In this section of my report, I will highlight section of my code with explanati
 \section{File Structure}
 See the following of the tree structure of the project. This is created using the terminal tree command on a freshly cloned version of my repository so that only important files are shown:
 
+
+
+
+\begin{table}[H]
+\centering
+\caption{Group A Skills, Found in the Project (skills include all of Models and most of Algorithms)}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+\textbf{Group A Skill} & \textbf{Found in} \\
+\hline
+Complex data model in database (eg several interlinked tables) & These models are found in the implementation of my backend \\
+\hline
+Hash tables, lists, stacks, queues, graphs, trees or structures of equivalent standard &  \\
+\hline
+Files(s) organised for direct access &  Shown in this section\\
+\hline
+Complex scientific/mathematical/robotics/control/business model & User session persistance as an example complex control model \\
+\hline
+Complex user-defined use of object-orientated programming (OOP) model, eg classes, inheritance, composition, polymorphism, interfaces & Created upon user's registration and also defined when new entries are created.  \\
+\hline
+Complex client-server model & Flow of data between frontend application and backend via RESTful API \\
+\hline
+Cross-table parameterised SQL & Used throughout due to the relationship between my models (design detailed in the previous section) \\
+\hline
+Aggregate SQL functions & Used when gathering statistics about user's journal\\
+\hline
+List operations & the journal is handled as an array of entries in the frontend, \\
+\hline
+Hashing & Hashing, salting of password for storage as well as validating the user password by comparing hash \\
+\hline
+Recursive algorithms &  Used for the implementation of sorting algorithm \\
+\hline
+Mergesort or similarly efficient sort &  \\
+\hline
+Dynamic generation of objects based on complex user-defined use of OOP model &  \\
+\hline
+Server-side scripting using request and response objects and server-side extensions for a complex client-server model & Fundamental to my application as this is used betwe \\
+\hline
+Calling parameterised Web service APIs and parsing JSON/XML to service a complex client-server model  &  \\
+\hline
+\end{tabularx}
+\end{table}
+
 \subsection{Backend}
 \begin{verbatim}
 ├── ERdiagram.png
@@ -180,6 +223,8 @@ Data models are the backbone of my backend server. In my design section I have a
 \end{minted}
 To improve maintainability and readability, I have defined many helper functions in a separate file called utils.py. This is a good practice and in my codebase I try to follow the Single Responsibility Principal as much as possible. This makes the code more self contained, and also makes it easier to perform unit tests on the helper functions. In the code included in the appendix it will contain all the relevant codes relating to what I talk about in this section of the report.
 
+
+TODO: Explain the code above and below.
 \subsubsection{Modelling the Journal and Entries}
 \begin{minted}{python3}
   from email.policy import default
@@ -298,11 +343,13 @@ To improve maintainability and readability, I have defined many helper functions
           response = client.analyze_sentiment(request={"document": document})
           return response.document_sentiment.score
 \end{minted}
-
+TODO: add interfaces 
 
 
 \section{Algorithms}
 Detail the implementation of algorithms.
+
+TODO: include sorting algorithms
 
 \subsection{Implementation of the SQL Queries}
 To provide context, the following are the SQL queries that are implemented in the Django ORM as methods of the Journal model. This allow me to leverage powerful features of Python/Django enabling me to make more dynamic queries with ease. For example I can access the journal id of the current instance of the model using self.journal\_id, which can then be used directly in the query through string interpolation. In action, when a user accesses the API endpoint to get their journal statistics, self refers to user making the request. Therefore, the query will return the statistics of the journal that the user who just made that request. Having these as methods is also a good practice as it allows for better modularity and readability.
@@ -363,7 +410,327 @@ SELECT
 \end{minted}
 
 \section{Modularity}
-Modularity is shown throughout my codebase.
+Modularity is shown throughout my codebase and I try splitting code into modules when it makes sense. A couple of examples I thought were worth mentioning are the hooks I have created in my frontend to make call to the backend API and also the modules I created to enable persist login in the frontend using context. 
+
+\subsection{API call functions}
+Here I will include the code for the hooks I have created to make API calls to the backend. This module is repeatedly reused throughout the frontend to make calls to the backend. For demonstration sake, I will be only including one example of my useApi hook in action.
+
+\subsubsection{useApi.ts}
+\begin{minted}{typescript}
+import { useState,  useCallback } from "react";
+import  { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import { myApiCall } from "./axios";
+
+// generic interface for the hook's return type
+interface ApiHookState<T> {
+  isLoading: boolean;
+  error: AxiosError | null; 
+  data: T | null;
+  fetchData: () => Promise<void>;
+}
+
+export default function useApi<T>(
+  config: AxiosRequestConfig,
+): ApiHookState<T> {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState<T | null>(null);
+
+  const fetchData = useCallback(async () => {
+        setIsLoading(true);
+        try {
+          const response: AxiosResponse<T> = await myApiCall(config);
+          setData(response.data);
+        } catch (error: any) {
+          setError(error);
+        } finally {
+          setIsLoading(false);
+        }
+      }, [config]);
+      return { isLoading, error, data, fetchData };
+    }
+\end{minted}
+I have created useApi hook because whenever I make a call to the backend, I want to be able to retrieve information about wether the call is loading, if there is an error, and the data that is returned. This piece of code is built on top of the Axios library which is a promised\footnote{Promise is an asynchronous operation that can either succeed or fail. }  based library for HTTP requests. A promise exists in one of three states: pending, fulfilled, or rejected. See my implementation to see how extract additional information from my call.
+
+A generic interface is used to define the return type of the hook. This is useful since it increases the reusability of the module. 
+
+TODO: finish explaining
+A callback function is 
+
+\subsubsection{from axios.ts}
+\begin{minted}{typescript}
+...
+export const myApiCall: AxiosInstance = axios.create({
+    baseURL: "http://127.0.0.1:8000/", 
+    timeout: 5000, // time before the request times out in milliseconds
+    headers: {
+        "Content-Type": "application/json", // I use json as the default content type 
+        
+    },
+});
+\end{minted}
+
+\subsubsection{RegisterPage.tsx}
+\begin{minted}{typescript}
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import useApi from "../../api/useApi";
+import { User } from "../../hooks/useUser";
+
+interface registerRequestData {
+  email: string;
+  password: string;
+  first_name: string;
+  last_name: string;
+}
+
+export default function RegisterPage(): JSX.Element {
+  // my states
+  const [registerRequestData, setregisterRequestData] =
+    useState<registerRequestData>({} as registerRequestData);
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const { isLoading, error, data, fetchData } = useApi<User>({
+    url: "/user/register/",
+    method: "post",
+    data: {
+      email: registerRequestData.email,
+      password: registerRequestData.password,
+      first_name: registerRequestData.first_name,
+      last_name: registerRequestData.last_name,
+    },
+  });
+
+  useEffect(() => {
+    if (data) {
+      // redirect to profile page
+      login(data);
+      navigate("/profile");
+    }
+  }, [data]);
+  const onRegisterFunc = () => {
+    console.log("Registering...");
+    fetchData(); // triggers myApiCall
+  };
+  return (
+    <div>
+      <input
+        placeholder="email"
+        value={registerRequestData.email}
+        onChange={(e) =>
+          setregisterRequestData({
+            ...registerRequestData,
+            email: e.target.value,
+          })
+        }
+      />
+      <input
+        type="password"
+        placeholder="password"
+        value={registerRequestData.password}
+        onChange={(e) =>
+          setregisterRequestData({
+            ...registerRequestData,
+            password: e.target.value,
+          })
+        }
+      />
+      <input
+        placeholder="first name"
+        value={registerRequestData.first_name}
+        onChange={(e) =>
+          setregisterRequestData({
+            ...registerRequestData,
+            first_name: e.target.value,
+          })
+        }
+      />
+      <input
+        placeholder="last name"
+        value={registerRequestData.last_name}
+        onChange={(e) =>
+          setregisterRequestData({
+            ...registerRequestData,
+            last_name: e.target.value,
+          })
+        }
+      />
+      {isLoading && <div>Loading...</div>}
+      {error && <div>{error.message}</div>}
+      {error && <div>{JSON.stringify(error.response?.data)}</div>}
+      {data && (
+        <div>
+          Registered successfully
+          <div>Welcome {data.first_name}</div>
+        </div>
+      )}
+
+      <br />
+
+      <input
+        disabled={isLoading}
+        type="button"
+        value="Register"
+        onClick={onRegisterFunc}
+      />
+    </div>
+  );
+}
+\end{minted}
+TODO: Explain the code above.
+This is the example of using my useApi hook. The versatility is demonstrated here .....
+
+\subsection{Persistent Login Session}
+
+\subsubsection{useUser.ts}
+\begin{minted}{typescript}
+import Cookies from "universal-cookie";
+import useUserContext from "./useUserContext";
+
+export interface User {
+    user_id: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+    authToken?: string;
+    email_prompt: boolean;
+  }
+export default function useUser() {
+    const { updateUser } = useUserContext();
+
+    const cookies = new Cookies();
+
+    const addUser = (user: User) => {
+        cookies.set("user", user, { path: "/",
+        secure: true,
+        sameSite: "strict"
+
+    });
+        updateUser(user);
+        console.log("User added");
+    }
+
+    const removeUser = () => {
+        cookies.remove("user");
+        updateUser(null);
+        console.log("User removed");
+    }
+    const getUser = (): User | undefined  => {
+        return cookies.get("user");
+    }
+
+    return {
+        addUser,
+        removeUser,
+        getUser
+    }
+}
+\end{minted}
+
+TODO: Explain the code above.
+
+\subsubsection{userContext.tsx}
+\begin{minted}{typescript}
+import Cookies from "universal-cookie";
+import { User } from "../hooks/useUser";
+import React, { createContext, useState, ReactNode, useEffect } from "react";
+
+export interface UserContextType {
+  user: User | null;
+  updateUser: (user: User | null) => void;
+}
+
+export const UserContext = createContext<UserContextType | undefined>(
+  undefined
+);
+
+export const UserProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const cookies = new Cookies();
+  const [user, setUser] = useState<User | null>(() => {
+    // prevent my user being lost on refresh
+    const savedUser = cookies.get("user");
+    if (savedUser) {
+      return savedUser;
+    }
+  });
+
+  const updateUser = (newUser: User | null) => {
+    setUser(newUser);
+    console.log("update user for context: ", newUser, user);
+  };
+
+  useEffect(() => {
+    if (user) console.log("user context: ", user);
+  }, [user]);
+
+  return (
+    <UserContext.Provider value={{ user, updateUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+\end{minted}
+
+TODO: Explain the code above.
+
+\subsubsection{useAuth.ts}
+\begin{minted}{typescript}
+import { User } from "./useUser";
+import useUser from "./useUser";
+
+export default function useAuth() {
+    const { getUser, addUser, removeUser } = useUser();
+
+    const login = (user: User) => {
+        addUser(user);
+    }
+
+    const logout = () => {
+        removeUser();
+    }
+
+    const isAuthenticated = () => {
+        return getUser() !== undefined;
+    }
+
+    return {
+        login,
+        logout,
+        isAuthenticated
+    }}
+
+\end{minted}
+
+TODO: Explain the code above.
+
+\subsubsection{useUserContext.ts}
+\begin{minted}{typescript}
+import { useContext} from "react";
+import { UserContext, UserContextType  } from "../context/userContext";
+
+export default function useUserContext() {
+    const context = useContext(UserContext) as UserContextType;
+
+    if (context === undefined) {
+        throw new Error("useUser must be used within a UserProvider");
+    }
+
+    return context;
+
+}
+\end{minted}
+
+
+TODO: Explain the code above.
+
+
+
+
+
 
 \subsection{Virtual Environment}
 Discuss the modularity of the project.
@@ -371,6 +738,19 @@ Discuss the modularity of the project.
 \section{Defensive Programming / Robustness}
 Explain the measures taken for defensive programming and robustness.
 
+TODO: Sanity checking
+TODO: Error handling
+TODO: Input validation
+TODO: Authentication and Authorization
+TODO: CSRF
+TODO: Token Authentication/ Session Management
+TODO: XSS (cookies vs local storage)
+TODO: SQL Injection
+TODO: Password Hashing
+TODO: Rate Limiting
+TODO: CORS
+
+TODO: secret key management
 
 \subsubsection{Cross Site Request Forgery (CSRF)}
 
@@ -383,3 +763,6 @@ Explain the measures taken for defensive programming and robustness.
 
 
 \section{Credential Management}
+
+
+TODO: compare against spec for group A skills
