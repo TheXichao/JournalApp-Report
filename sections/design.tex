@@ -1,48 +1,48 @@
 % design.tex
 \chapter{Design}
-In this section of my NEA I will be including details on the detailed design of my Journal app. 
+In this section of my NEA, I will be including details on the detailed design of my Journal app. 
 
 
 \section{Introduction}
-The objective of my journal app is to provide users with an easily accessible and navigated app for digital journaling. To accomplish this, I will choose the Django REST framework for my backend server functionality and React, a powerful JavaScript library, for my frontend. In this section of my report I will be justifying why I have made these choices and detailing the specific designs for full stack application tailored to these frameworks
+The objective of my journal app is to provide users with an easily accessible and navigated app for digital journaling. To accomplish this, I will choose the Django REST framework for my Backend server functionality and React, a powerful JavaScript library, for my Frontend. In this section of my report, I will be justifying why I have made these choices and detailing the specific designs for full-stack applications tailored to these frameworks
 
 \section{Frontend}
-Frontend primarily refers to the interface which the user interacts. The most common form of frontend is a webpage, which encompasses the layout and design elements of the website. Initially, webpages are created using HTML, CSS, and JavaScript. However, as time progresses, developers have devised ways to generate them. Using Python, for example, frameworks like Django and Flask allow developers to build HTML, CSS, and Javascript pages interactively and dynamically. In the case of Django and Flask, developers can use templating engines like Jinja2 to generate dynamic HTML pages by integrating Python code into the HTML layout, as well as being able to avoid boilerplate code by building templates for the layout of the appearance of the page and then being able to make changes to different pages while maintaining consistency across the website. This approach saves time since it lets me focus on the features instead of writing boilerplate code.
+Frontend primarily refers to the interface with which the user interacts. The most common form of Frontend is a webpage, which encompasses the layout and design elements of the website. Initially, webpages are created using HTML, CSS, and JavaScript. However, as time progresses, developers have devised ways to generate them. Using Python, for example, frameworks like Django and Flask allow developers to build HTML, CSS, and Javascript pages interactively and dynamically. In the case of Django and Flask, developers can use templating engines like Jinja2 to generate dynamic HTML pages by integrating Python code into the HTML layout, as well as being able to avoid boilerplate code by building templates for the layout of the appearance of the page and then being able to make changes to different pages while maintaining consistency across the website. This approach saves time since it lets me focus on the features instead of writing boilerplate code.
 
-Behind the scenes, frontend is not only the UI, as it also includes the logic and functionality that drives the user experience. This includes handling user interactions, making API calls, data manipulation, and updating the UI based on user input.
+Behind the scenes, the Frontend is not only the UI, as it also includes the logic and functionality that drive the user experience. This includes handling user interactions, making API calls, data manipulation, and updating the UI based on user input.
 
-Javascript frameworks are the most popular amongst web developers since there exist powerful libraries like React and Angular maintained by giant tech companies, and javascript is simply more widely adopted and used in the web development world. Similarly, I have heard good things about a library called Svelt, which offers a lightweight approach to building user interfaces. What I mean by that is it uses fewer codes, is truly reactive, and has no virtual DOM
+Javascript frameworks are the most popular amongst web developers since there exist powerful libraries like React and Angular maintained by giant tech companies, and JavaScript is simply more widely adopted and used in the web development world. Similarly, I have heard good things about a library called Svelt, which offers a lightweight approach to building user interfaces. What I mean by that is it uses fewer codes, is truly reactive, and has no virtual DOM
 
-Initially, I used Django to generate my frontend pages using its built-in templating engine dynamically. However, I want to create a more modular approach and, therefore, truly isolate my backend and frontend. The benefit of doing so is that I could connect a completely different front-end interface to the same backend functionality with ease via API communication. In my application, I will try my best to maintain the Single Responsibility design principle throughout my application development process.\\
-To achieve achieve this modular approach, I decided to use a separate frontend to my Django backend, specifically React.js. React is the most popular and in-demand ecosystem developed by Facebook for building responsive user interfaces, Facebook developed React.js and later React native for building "truly native" mobile apps using JavaScript. React.js is the javascript library I chose for my web creation, and I believe that it would be a valuable learning experience to take on my first Javascript library to build my app.
+Initially, I used Django to generate my Frontend pages using its built-in templating engine dynamically. However, I want to create a more modular approach and, therefore, truly isolate my Backend and Frontend. The benefit of doing so is that I could connect a completely different front-end interface to the same Backend functionality with ease via API communication. In my application, I will try my best to maintain the Single Responsibility design principle throughout my application development process.\\
+To achieve this modular approach, I decided to use a separate frontend to my Django Backend, specifically React.js. React is the most popular and in-demand ecosystem developed by Facebook for building responsive user interfaces, Facebook developed React.js and later React native for building "truly native" mobile apps using JavaScript. React.js is the javascript library I chose for my web creation, and I believe that it would be a valuable learning experience to take on my first Javascript library to build my app.
 
 \section{Backend}
-Backend refers to the server side of a web application, where the logic behind the application is. It is responsible for processing requests, interacting with databases, and algorithmically generating responses to be sent back to the client and other background processes. There are frameworks available for different programming languages that can be used for backend development.
+Backend refers to the server side of a web application, where the logic behind the application is. It is responsible for processing requests, interacting with databases, and algorithmically generating responses to be sent back to the client and other background processes. There are frameworks available for different programming languages that can be used for Backend development.
 
-I have considered Python, C\# and Javascript frameworks for my project as I am proficient in Python, C\# (having dabbled with those in my own time and studied those languages for GCSE and A-Levels, respectively), and Javascript is a language I have always wanted to explore further since it is the most popular language; hence, there's wide support for it in terms of libraries and frameworks. Specifically, I have considered Django, FastAPI, Flask, Next.js, and ASP.NET Core frameworks.
+I have considered Python, C\#, and Javascript frameworks for my project as I am proficient in Python, C\# (having dabbled with those in my own time and studied those languages for GCSE and A-Levels, respectively), and Javascript is a language I have always wanted to explore further since it is the most popular language; hence, there's wide support for it in terms of libraries and frameworks. Specifically, I have considered Django, FastAPI, Flask, Next.js, and ASP.NET Core frameworks.
 
 \subsection{ASP.NET:}
-ASP.NET is a powerful framework developed by Microsoft for building web apps and services using the .NET framework and C\#. It is capable and scalable, making it suitable for large-scale applications. Personally, however. I did not end up choosing ASP.NET due to my hardware constraint. I am running a MacOS unix system on the apple silicone architecture, which I could technically do .Net development using. However, from my experience in the past, it is a pain. In addition, ASP.NET was primarily suited for the Windows ecosystem (although they are trying to make it more platform-independent), meaning it is not optimal for me personally, and there are other better ways to create a university platform-independent backend.
+ASP.NET is a powerful framework developed by Microsoft for building web apps and services using the .NET framework and C\#. It is capable and scalable, making it suitable for large-scale applications. Personally, however. I did not end up choosing ASP.NET due to my hardware constraint. I am running a MacOS unix system on the Apple silicone architecture, which I could technically do .Net development using. However, from my experience in the past, it is a pain. In addition, ASP.NET was primarily suited for the Windows ecosystem (although they are trying to make it more platform-independent), meaning it is not optimal for me personally, and there are other better ways to create a university platform-independent Backend.
 
 \subsection{Next.js and Express.js:}
-Two of the most demanding and powerful frameworks are these two are used to build the backend using Node.js. Next.js goes hand-in-hand with React since it provides server-side rendering. This is a thin client approach, where the initial HTML is generated on the server and then sent to the client. This approach ensures the smoothness of the user experience \cite{gillis_2020_fat}. Express.js is, on the other hand, a lightweight and flexible framework for building RESTful APIs and the like. It might be nice, but I am more comfortable with Python, so I decided that it's a good idea to only use Javascript for my Frontend development and Python for my Backend.
+Two of the most demanding and powerful frameworks are these two are used to build the Backend using Node.js. Next.js goes hand-in-hand with React since it provides server-side rendering. This is a thin client approach, where the initial HTML is generated on the server and then sent to the client. This approach ensures the smoothness of the user experience \cite{gillis_2020_fat}. Express.js is, on the other hand, a lightweight and flexible framework for building RESTful APIs and the like. It might be nice, but I am more comfortable with Python, so I decided that it's a good idea to only use Javascript for my Frontend development and Python for my Backend.
 
 \subsection{Flask and FastAPI:}
-Flask is a lightweight web framework for Python used to build APIs. I had previously dabbled with the framework and found it barebone and flexible. FastAPI is a much more modern alternative to Flask. It provides similar simplicity and flexibility but with the added benefit of high performance due to its asynchronous capabilities. I was really tempted to use FastAPI for my project, however, I had been learning a lot of Django and decided to go with it instead.
+Flask is a lightweight web framework for Python used to build APIs. I had previously dabbled with the framework and found it barebone and flexible. FastAPI is a much more modern alternative to Flask. It provides similar simplicity and flexibility but with the added benefit of high performance due to its asynchronous capabilities. I was tempted to use FastAPI for my project, however, I had been learning a lot of Django and decided to go with it instead.
 
 \subsection{Django}
-Django is the most feature-rich mainstream backend web development framework in Python. It provides all the necessary tools I need, including URL routing, Database Object-Relational mapping, as well as overall security features preventing basic forms of attacks such as CSRF. This allows me to robustly build my application, focusing on functionalities that matter rather than reinventing the wheels. Django also allows me to have fine-tuned control over functionalities if I want to redesign, replace, or extend any parts. Even though Django might not be as performant as some other frameworks, such as FastAPI, it offers a well-established and stable platform for web development suitable for my Journal app.
+Django is the most feature-rich mainstream Backend web development framework in Python. It provides all the necessary tools I need, including URL routing, Database Object-Relational mapping, as well as overall security features preventing basic forms of attacks such as CSRF. This allows me to robustly build my application, focusing on functionalities that matter rather than reinventing the wheels. Django also allows me to have fine-tuned control over functionalities if I want to redesign, replace, or extend any parts. Even though Django might not be as performant as some other frameworks, such as FastAPI, it offers a well-established and stable platform for web development suitable for my Journal app.
 
 \section{Hierarchy Charts}
-Hierarchy charts are visual representations of a large problem being broken down into smaller components or sub-problems. They are charts in the form of an upside-down tree structure. Ideally, the problem should be broken down until each module is no longer than a page of code. In the charts I have created, I had to separate my application for two different charts. One for my Frontend and one for my Backend because the project is quite large. In the diagram, I have broken down my problems to a reasonably small size yet not too specific such that it becomes too difficult to maintain.
+Hierarchy charts are visual representations of a large problem being broken down into smaller components or sub-problems. They are charts in the form of an upside-down tree structure. Ideally, the problem should be broken down until each module is no longer than a page of code. In the charts I created, I had to separate my application into two different charts. One for my Frontend and one for my Backend because the project is quite large. In the diagram, I have broken down my problems to a reasonably small size yet not too specific such that it becomes too difficult to maintain.
 
 \subsection{Django Server Design:}
-In this hierarchy chart, I have decomposed the design of my entire Django backend API into many smaller problems I will solve in my implementation. I will not be describing each individual problem in detail here. Still, the hierarchy chart provides a clear overview of how the different components and functionalities of the backend system are organised. See Figure \ref{fig:backendHD} for the chart.
+In this hierarchy chart, I have decomposed the design of my entire Django Backend API into many smaller problems I will solve in my implementation. I will not be describing each individual problem in detail here. Still, the hierarchy chart provides a clear overview of how the different components and functionalities of the Backend system are organised. See Figure \ref{fig:BackendHD} for the chart.
 
 \subsection{React Frontend}
-In the hierarchy chart for the JavaScript frontend, I have broken down the design of my user interface and client-side functionalities into smaller components.
+In the hierarchy chart for the JavaScript Frontend, I have broken down the design of my user interface and client-side functionalities into smaller components.
 
-These components include user authentication, data retrieval from the backend API, the UI and more. In this chart, it's hard to show how the functions communicate at an inter-component level. However, on top of what's designed in the hierarchy chart, data is passed through props and the things under my state management box shown in the diagram would be accessible throughout my application by different components through the use of React Context and Context Provider. See Figure \ref{fig:frontendHD} for the chart.
+These components include user authentication, data retrieval from the Backend API, the UI, and more. In this chart, it's hard to show how the functions communicate at an inter-component level. However, on top of what's designed in the hierarchy chart, data is passed through props, and the things under my state management box shown in the diagram would be accessible throughout my application by different components through the use of React Context and Context Provider. See Figure \ref{fig:FrontendHD} for the chart.
 
 \begin{landscape}
 \begin{figure}
@@ -51,7 +51,7 @@ These components include user authentication, data retrieval from the backend AP
     width=1\linewidth,
     ]{Assets/Hierarchy_Backend.png}
     \caption{Backend Hierarchy Diagram}
-    \label{fig:backendHD}
+    \label{fig:BackendHD}
 \end{figure}
 \end{landscape}
 
@@ -62,12 +62,12 @@ These components include user authentication, data retrieval from the backend AP
         \centering
         \includegraphics[width=1\linewidth]{Assets/FrontendER.png}
         \caption{Frontend Hierarchy Diagram}
-        \label{fig:frontendHD}
+        \label{fig:FrontendHD}
     \end{figure}
 \end{landscape}
 
 \subsection{Flowchart}
-Now, to bring everything together, I have designed a flowchart to depict the flow of operations across the entire system. The overall narrative of the flowchart is that the user interacts with the frontend web pages, and it would trigger functions in the frontend JavaScript code. These functions would perform operations such as making requests to the RESTful API endpoints exposed by the Backend or making changes to the storage in the browser. The front end also manipulates the storage system in the browser while the server handles the database. 
+Now, to bring everything together, I have designed a flowchart to depict the flow of operations across the entire system. The overall narrative of the flowchart is that the user interacts with the Frontend web pages, and it would trigger functions in the Frontend JavaScript code. These functions would perform operations such as making requests to the RESTful API endpoints exposed by the Backend or making changes to the storage in the browser. The Frontend also manipulates the storage system in the browser while the server handles the database. 
 
 \begin{figure}[h]
     \centering
@@ -76,13 +76,13 @@ Now, to bring everything together, I have designed a flowchart to depict the flo
     \label{fig:3.3}
 \end{figure}
 
-Something to note is that users can only access webpages via HTTP(s) requests (probably through a internet browser). The backend is not intended to be accessed by the user directly. Communication with the server happens internally through private requests. This is a good design practice as it ensures that the server is secure and reduces the risk of attacks by malicious users. 
+Something to note is that users can only access webpages via HTTP(s) requests (probably through an internet browser). The Backend is not intended to be accessed by the user directly. Communication with the server happens internally through private requests. This is a good design practice as it ensures that the server is secure and reduces the risk of attacks by malicious users. 
 
 
 \section{Data Structures / Data Modelling}
 \subsection{Entity Relationship Modelling}
 \subsubsection{Storing Data}
-In my application, data and the flow of data are integral to the system's overall functionality. I have decided to store the data centrally in a relational database. Central storage ensures reliability, scalability and ease of access of data for me. This is good for my users, who expect their data to be reliably stored and easily accessed.
+In my application, data and the flow of data are integral to the system's overall functionality. I have decided to store the data centrally in a relational database. Central storage ensures reliability, scalability, and ease of access to data for me. This is good for my users, who expect their data to be reliably stored and easily accessed.
 
 While it is possible to implement a distributed data storage system for a journal app, I have chosen a centralised approach for simplicity and ease of implementation. Not only is a centralised database more accessible for amateur developers like myself but there are also other reasons why centralised storage is better for my journal app. Keeping entries in a structured place means opportunities to analyse the data. If the user opts in for these features, I could perform sentiment analysis on the user's entries or generate statistics and insights based on their journaling patterns. In fact, Google provides a model for analysing sentiment, which is easily accessible through their API. This is an additional thing I may implement after my project is complete.
 
@@ -103,10 +103,10 @@ Looking through the specifications of my journal app, I have identified data tha
 
 
 \subsection{External Data Sources}
-In a bit of my code I implemented API calls to google cloud natural language API to perform sentiment analysis, it is a method included in the entry class in the backend, it can be used to generate a score for the sentiment of the user represented by a float value. This is just a gimmick feature but not core to the project.
+In a bit of my code, I implemented API calls to Google Cloud natural language API to perform sentiment analysis, it is a method included in the entry class in the Backend, it can be used to generate a score for the sentiment of the user represented by a float value. This is just a gimmick feature but not core to the project.
 
 \subsection{OOP Model}
-One of the core features of Django is the built-in Object Relation Mapping, which enables me to Model my database using Objects. Initially, I explored writing SQL queries to create my database, but as my project grew in complexity, I realised that to use some powerful features provided by Django, for example, the authentication and the administrator interface, I need to integrate Django's Object Relational Mapping functionalities with my database. With this powerful feature, database schema can be defined using Python classes. Additionally, when it comes to interacting with defined data models, Django provides three ways to interact with the database: the Django ORM, raw SQL queries, and the admin panel. Enabling me to have the best of both worlds, the flexibility of powerful SQL queries and the ease of use of the Django ORM (with the bonus of a GUI interface).
+One of the core features of Django is the built-in Object Relation Mapping, which enables me to Model my database using Objects. Initially, I explored writing SQL queries to create my database, but as my project grew in complexity, I realised that to use some powerful features provided by Django, for example, the authentication and the administrator interface, I needed to integrate Django's Object Relational Mapping functionalities with my database. With this powerful feature, the database schema can be defined using Python classes. Additionally, when it comes to interacting with defined data models, Django provides three ways to interact with the database: the Django ORM, raw SQL queries, and the admin panel. This enabled me to have the best of both worlds, the flexibility of powerful SQL queries and the ease of use of the Django ORM (with the bonus of a GUI interface).
 
 
 \begin{figure}[!hbt]
@@ -124,37 +124,37 @@ One of the core features of Django is the built-in Object Relation Mapping, whic
 
 In my models.py file, I have defined several classes that represent different objects in my project:
 
-- MyUser: A class which represents my custom user model in Django, with additional fields and methods tailored to my project's requirements. 
+- MyUser: A class that represents my custom user model in Django, with additional fields and methods tailored to my project's requirements. 
 
 - MyUserManager: A class that manages MyUser class objects, including creating new user instances. MyUser has a dependency on MyUserManager for its functionality.
 
-- Journal: A class representing a journal entry in my project, with fields such as title, content, and date. Journal has a one to one association with MyUser class.
+- Journal: A class representing a journal entry in my project, with fields such as title, content, and date. Journal has a one-to-one association with MyUser class.
 
 - Entry: A class with a composition relationship with the Journal class, representing a single entry within a journal.
 
 Multiple inheritance is a feature that's not common to all OOP languages since it can lead to potential conflicts and ambiguity in the class hierarchy. In Python, it is supported, and as you can see in the UML diagram, MyUser inherits from AbstractBaseUser and PermissionsMixin. An abstract class is a class that acts as a blueprint for creating a new derived class. I have inherited Django's blueprint for creating users, and I have designed my own user class, which depends on the email field for user registration and login. The second inheritance is from the PermissionsMixin class; this enhances my user class with built-in methods for handling user permissions and authorisation, which is useful. 
 
-Both the Journal and Entry classes are inherited from the Django Model class. This allows me to utilise Django's object relational mapping capabilities to interact with the database smoothly. Entry has a composition relationship with a Journal because an entry is a part of a journal and cannot exist independently. Similarly, the Journal class has a one-to-one association with the MyUser class, indicating that each journal entry is associated with a specific user.
+Both the Journal and Entry classes are inherited from the Django Model class. This allows me to utilise Django's object-relational mapping capabilities to interact with the database smoothly. Entry has a composition relationship with a Journal because an entry is a part of a journal and cannot exist independently. Similarly, the Journal class has a one-to-one association with the MyUser class, indicating that each journal entry is associated with a specific user.
 
 \subsection{Handling JSON}
-JSON data are repeatedly used in my project. JSON are in the form of key-value pairs, similar to a dictionary in Python. In my project, I have used JSON data for communication and it is also just a nice way to store other information. One example off the top of my head is that I store the secret key for my application in a secret.json file which I render with python code.
+JSON data are repeatedly used in my project. JSON is in the form of key-value pairs, similar to a dictionary in Python. In my project, I have used JSON data for communication and it is also just a nice way to store other information. One example off the top of my head is that I store the secret key for my application in a secret.json file which I render with Python code.
 
 \subsection{Typescript Interface}
-Conceptually Typescript interface is very similar to the Object Oriented Principal of Interface. Both are used to layout the "shape" of an object. It allows a form of abstraction and encapsulation in the code, since only the blueprint of the object is defined and also many methods and properties are bundled into one. In my project, Interface is very useful to model the blueprint of the data I am expected to receive from the backend. By defining interfaces, I can guarantee the format of the is as expected which increase the maintainability of the code and reduce the change of unexpected errors.
+Conceptually Typescript interface is very similar to the Object Oriented Principal of Interface. Both are used to layout the "shape" of an object. It allows a form of abstraction and encapsulation in the code since only the blueprint of the object is defined and also many methods and properties are bundled into one. In my project, Interface is very useful to model the blueprint of the data I am expected to receive from the Backend. By defining interfaces, I can guarantee the format is as expected which increases the maintainability of the code and reduces the chance of unexpected errors.
 
 
 \section{Algorithms}
-In my frontend application, once all the entries are retrieved from my database, in order to improve the experience of the user, I need there to be a way to sort and filter the entries efficiently. While it is possible to create multiple endpoints in my backend application to return the data in multiple ways (e.g. sorted by date, filtered by category), this can result in unnecessary network requests and slower performance. To optimise the sorting and filtering of entries, I can implement an efficient algorithm in my frontend application.
+In my Frontend application, once all the entries are retrieved from my database, in order to improve the experience of the user, I need there to be a way to sort and filter the entries efficiently. While it is possible to create multiple endpoints in my Backend application to return the data in multiple ways (e.g. sorted by date, filtered by category), this can result in unnecessary network requests and slower performance. To optimise the sorting and filtering of entries, I can implement an efficient algorithm in my Frontend application.
 
-For my purpose I will implement the sorting based on the entry submission date, although it can easily be modified to include other criteria such as the sentiment of the entries.
+For my purpose, I will implement the sorting based on the entry submission date, although it can easily be modified to include other criteria such as the sentiment of the entries.
 
-Choosing an effective algorithm can improve responsiveness of the application and it can especially do so for long term users of the application who might have a large number of entries in their journal.
+Choosing an effective algorithm can improve the responsiveness of the application and it can especially do so for long-term users of the application who might have a large number of entries in their journal.
 
-Bubble sort is a simple algorithm however it has terrible time complexity making it unsuitable for large datasets. At first I had chosen and implemented the QuickSort algorithm in my code since I imagined that quicksort would be efficient as it has an average time complexity of O(n log n). However, I am now rewriting my design now to use Tim Sort instead. This is because I realised that the entries after retrieved from my database, would be in a structured and near sorted format. Since timsort is partially insertion sort gives it the benefit of being efficient for near sorted data, and the fact it's partially merge sort gives it the benefit of being efficient for large lists of entries with an average time complexity of O(n log n). See \href{https://www.toptal.com/developers/sorting-algorithms}{this} graphic for a comparison of sorting algorithms.
+Bubble sort is a simple algorithm however it has terrible time complexity making it unsuitable for large datasets. At first, I chose and implemented the QuickSort algorithm in my code since I imagined that quicksort would be efficient as it has an average time complexity of O(n log n). However, I am now rewriting my design to use Tim Sort\cite{geekific2022timsort} instead. This is because I realised that the entries after being retrieved from my database, would be in a structured and near-sorted format. Since Tim Sort is partially insertion sort gives it the benefit of being efficient for near-sorted data, and the fact it's partially merge sort gives it the benefit of being efficient for large lists of entries with an average time complexity of O(n log n). See \href{https://www.toptal.com/developers/sorting-algorithms}{this} graphic for a comparison of sorting algorithms.
 
-Writing my own sorting algorithm gives me greater flexibility as I am able to define what is the key that I am deriving my my entries. In my specific case, I have chosen to implement the QuickSort algorithm for sorting the entries based of the creation date of the entry. 
+Writing my own sorting algorithm gives me greater flexibility as I am able to define what is the key that I am deriving my my entries. In my specific case, I have chosen to implement the QuickSort algorithm for sorting the entries based on the creation date of the entry. 
 
-Here a simple implementation I have written in Python based on the instructions from OCR A-Level Further Mathematics formula book \cite{ocr2019furthermaths}, which is the first algorithm I have implemented in my project. The code is as follows:
+Here is a simple implementation I have written in Python based on the instructions from OCR A-Level Further Mathematics formula book \cite{ocr2019furthermaths}, which is the first algorithm I have implemented in my project. The code is as follows:
 \newpage
 \begin{figure}[H]
 \begin{minted}{python3}
@@ -203,32 +203,32 @@ print(quicksort(my_array))
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Assets/all_pages.png}
-    \caption{This is an overview of all the screens inside my application, it includes the home page, login page, register page, profile page, create page and view page. There are lines connecting the pages to show the flow of the application. Using the navigation bar at the top, the user can navigate to any page from any page.}
+    \caption{This is an overview of all the screens inside my application, it includes the home page, login page, register page, profile page, create page, and view page. There are lines connecting the pages to show the flow of the application. Using the navigation bar at the top, the user can navigate to any page from any page.}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Assets/home_page.png}
-    \caption{The homepage of my application, it includes a navigation bar at the top, a welcome message and buttons for creating and viewing the user's journal entries.}
+    \caption{The homepage of my application, includes a navigation bar at the top, a welcome message, and buttons for creating and viewing the user's journal entries.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Assets/login_page.png}
-    \caption{The login page of my application, it includes a navigation bar at the top, a form for the user to input their email and password and a button to submit the form. As you can see in the navigation bar, New Entry, View Entries and Logout are all greyed out, this is assuming that the user is not logged in.}
+    \caption{The login page of my application, includes a navigation bar at the top, a form for the user to input their email and password, and a button to submit the form. As you can see in the navigation bar, New Entry, View Entries, and Logout are all greyed out, this is assuming that the user is not logged in.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Assets/register_page.png}
-    \caption{Register page is very similar to the login page, it includes a navigation bar at the top, a form for the user inputs as well as the submission button. Registration field requires a couple more fields than the login page.}
+    \caption{The Register page is very similar to the login page, it includes a navigation bar at the top, a form for the user inputs as well as the submission button. The registration field requires a couple more fields than the login page.}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Assets/profile_page.png}
-    \caption{Profile page is where the user can view their profile information, as well as place where they can opt in for some additional features.}
+    \caption{Profile page is where the user can view their profile information, as well as a place where they can opt-in for some additional features.}
 \end{figure}
 
 
@@ -253,29 +253,29 @@ print(quicksort(my_array))
 
 
 \section{RESTful API Endpoints}
-REST effectively allows my frontend application to directly interact with the server through HTTP requests. in this section I will document some of the endpoints I have created in my Django backend. One more thing to add is that I have used Django REST framework to create my API endpoints. This is a framework on top of Django specifically designed for creating RESTful APIs.
+REST effectively allows my Frontend application to directly interact with the server through HTTP requests. In this section, I will document some of the endpoints I have created in my Django Backend. One more thing to add is that I have used the Django REST framework \cite{DjangoRESTFramework} to create my API endpoints. This is a framework on top of Django specifically designed for creating RESTful APIs.
 
 \subsection{Serialization and deserialization of data}
-Serialization refers to the process of converting complex data type into a format that can easily be transmitted. For my case I need to break down the user object into a JSON format which can then be sent to and use in my frontend. Deserialization is the opposite process, where the JSON data is converted back into a complex data type. I would need to process the JSON data in the frontend, and the fact that I'm using javascript means that I can easily parse the JSON data, considering that JSON is a subset of JavaScript.
+Serialization refers to the process of converting complex data types into a format that can easily be transmitted. For my case, I need to break down the user object into a JSON format which can then be sent to and used in my Frontend. Deserialization is the opposite process, where the JSON data is converted back into a complex data type. I would need to process the JSON data in the Frontend, and the fact that I'm using JavaScript means that I can easily parse the JSON data, considering that JSON is a subset of JavaScript.
 
 \subsection{login}
-The login endpoint is used to authenticate the user. The user sends a POST request to the server with their email and password. The server then checks if the email and salted and hashed value of the password match with records in the database. If they do, the server generates a token and sends it back to the user. This token then can be used to authenticate future requests. For both login and register if successful serialized user data is sent back to the user along with the token.
+The login endpoint is used to authenticate the user. The user sends a POST request to the server with their email and password. The server then checks if the email and salted and hashed values of the password match with records in the database. If they do, the server generates a token and sends it back to the user. This token then can be used to authenticate future requests. For both login and register if successful serialized user data is sent back to the user along with the token.
 
 \subsection{register}
-Register is similar, but it is used to create a new user. The user sends a POST request with their email and password and other user information. The server first of perform sanity check on the format of the email via regex, then it checks if the email is already in use. If it is not, the server creates a new user with the email and password and sends back a token as well as other user details in the response.
+Register is similar, but it is used to create a new user. The user sends a POST request with their email and password and other user information. The server first performs a sanity check on the format of the email via regex, then it checks if the email is already in use. If it is not, the server creates a new user with the email and password and sends back a token as well as other user details in the response.
 
 
 \subsection{get entries}
-This is the endpoint that retrieves all the entries of the user. The user sends a GET request, however the caveat is that the user must be authenticated and the generated token must be attached in teh header of the request. Because the user is validated, the server knows who this user is, and can then retrieve all the entries associated with this user through the foreign key relationship in the database. The server then sends back the entries in JSON format.
+This is the endpoint that retrieves all the entries of the user. The user sends a GET request, however, the caveat is that the user must be authenticated and the generated token must be attached in teh header of the request. Because the user is validated, the server knows who this user is, and can then retrieve all the entries associated with this user through the foreign key relationship in the database. The server then sends back the entries in JSON format.
 
 \subsection{create entry}
-Create entry is used to create a new entry. The user sends a POST request with the title and content of the entry. For this method the user must also be authenticated. The server knows which user this is and through the one to one relationship between the user and the journal entry, the server can create a new entry and associate it with the user's journal. The server then sends back the status of the request. Otherwise it sends back an error message.
+Create entry is used to create a new entry. The user sends a POST request with the title and content of the entry. For this method, the user must also be authenticated. The server knows which user this is and through the one-to-one relationship between the user and the journal entry, the server can create a new entry and associate it with the user's journal. The server then sends back the status of the request. Otherwise, it sends back an error message.
 
 \subsection{get statistics}
-This endpoint is used to obtain statistics about a user's journal. The server generate statistics based on the user's journal entries. 
+This endpoint is used to obtain statistics about a user's journal. The server generates statistics based on the user's journal entries. 
 
 \section{Interface Logic}
-Here I have created flowcharts demonstrating how each of these web pages are suppose to function.
+Here I have created flowcharts demonstrating how each of these web pages is supposed to function.
 
 \subsection{Login and Register Page}
 \begin{figure}[H]
@@ -300,10 +300,10 @@ Here I have created flowcharts demonstrating how each of these web pages are sup
 
 
 \subsection{Other}
-Create entries follow a similar design to login as it takes in user input and sends it to the server. The profile page is a page that displays the user's information, it reads of the data stored in my browser's storage then renders it. The home page is the first page the user sees when they visit the website. It includes buttons to navigate to other pages. 
+Create Entries follow a similar design to log in as it takes in user input and sends it to the server. The profile page is a page that displays the user's information, it reads the data stored in my browser's storage and then renders it. The home page is the first page the user sees when they visit the website. It includes buttons to navigate to other pages. 
 
 \section{Generating User Statistics}
-The statistics page renders the statistics generated by the server. The server use advance SQL queries to generate the statistics, and then sends it back to the user. Here I will be detailing the design of those queries.
+The statistics page renders the statistics generated by the server. The server uses advance SQL queries to generate the statistics and then sends it back to the user. Here I will be detailing the design of those queries.
 
 \subsection{SQL Queries}
 The exact implementation can be found in the Implementation section of the report. Here I will be detailing how the queries are structured and how they work without delving much into the specifics of the code.
@@ -317,28 +317,28 @@ For this feature, the logic of the query is as such:
     \item Limit the result to 1, this way only the most active month is returned.
 
 \end{enumerate}
-To achieve this a couple of SQL functions are used, namely the EXTRACT, JOIN, GROUP BY, COUNT, ORDER BY and LIMIT functions.
+To achieve this a couple of SQL functions are used, namely the EXTRACT, JOIN, GROUP BY, COUNT, ORDER BY, and LIMIT functions.
 
-EXTRACT is a function available on PostgreSQL which enable me to extract only a specific detail from a date, in this case the month. This is very handy as I could directly group the entries by the month.
+EXTRACT is a function available on PostgreSQL that enables me to extract only a specific detail from a date, in this case, the month. This is very handy as I could directly group the entries by the month.
 
-As shown in the Entity Relationship Diagram \ref{fig:ER}, in each journal belonging to a user there are multiple entries, to collect all of these entries I could use a JOIN clause to join the two tables together, at where teh foreign key of Entry is equal to the primary key of the Journal. This way I can collect all the entries associated with a user.
+As shown in the Entity Relationship Diagram \ref{fig:ER}, in each journal belonging to a user there are multiple entries, to collect all of these entries I could use a JOIN clause to join the two tables together, at where the foreign key of Entry is equal to the primary key of the Journal. This way I can collect all the entries associated with a user.
 
 Since I now have the months extracted from each entry, I can now use the GROUP BY clause to aggregate the entries by the month. In SQL if I have a GROUP BY clause, I then can use the COUNT function to count the number of entries in each group. This way I can count the number of entries in each month. The defined group and the function need to both be in the SELECT clause.
 
 Finally, I can use the ORDER BY clause to order the table by the count in descending order, this way the most active month is at the top. I can then use the LIMIT clause to limit the result to 1 to get the most active month.
 
 \subsubsection{Average Entry Per Week}
-This query involves a sub-query which get all the weeks with the entry count, and an outer query that averages this count, the logic is as such:
+This query involves a sub-query that gets all the weeks with the entry count and an outer query that averages this count, the logic is as such:
 \begin{enumerate}
-    \item The sub-query used is very similar to the query used to calculate the most active month. What happens here is that instead of grouping all the entries by month, they are grouped by their year and ISO week \cite{iso_week_date_wikipedia}. This enables me to get the number of entries all the individual weeks the user has ever made an entry.
-    \item Then an outer query perform an average on the entry count column, this way I can get the average number of entries the user makes per week.
+    \item The sub-query used is very similar to the query used to calculate the most active month. What happens here is that instead of grouping all the entries by month, they are grouped by their year and ISO week \cite{iso_week_date_wikipedia}. This enables me to get the number of entries for all the individual weeks the user has ever made an entry.
+    \item Then an outer query performs an average on the entry count column, this way I can get the average number of entries the user makes per week.
 \end{enumerate}
 
-The new function used here is the AVG function which take a field of a table as a parameter then perform an average of all the record's value in that field then an output of the average is returned. For me I got all the week's and the number of entries in that week, then I averaged the number of entries in each week to get the average number of entries per week.
+The new function used here is the AVG function which takes a field of a table as a parameter then performs an average of all the record's values in that field then an output of the average is returned. In my case, I got all the weeks and the number of entries in that week, and then I averaged the number of entries in each week to get the average number of entries per week.
 
 
 \subsubsection{Total Word count}
-This query I estimate the total word count by counting the number of spaces in the content of the entries. I basically assumed here that between every two words there is a single space, so if i count the number of spaces +1(accounting for the first/last word), I can get the word count .The logic is as follows:
+In this query, I estimate the total word count by counting the number of spaces in the content of the entries. I basically assumed here that between every two words, there is a single space, so if I count the number of spaces +1(accounting for the first/last word), I can get the word count. The logic is as follows:
 
 \begin{enumerate}
     \item In a similar way I get all the entries of a journal by performing the same join.
@@ -346,7 +346,7 @@ This query I estimate the total word count by counting the number of spaces in t
     \item I then sum all the words in the content of all the entries to get the total word count.
 \end{enumerate}
 
-A couple of new function used here include LENGTH, SUM, REPLACE.
+A couple of new functions used here include LENGTH, SUM, and REPLACE.
 
 Length will be used to get the length of the content of the entries, and the length of the content without spaces.
 
@@ -370,7 +370,7 @@ Specify the hardware and software requirements for the project.
     \hline
     \textbf{Requirement ID} & \textbf{Description} \\ \hline
     1 & Development Machine: Apple MacBook Pro 14-inch with M1 chip, 8 GB of RAM, and 256 GB SSD. This is more than sufficient for my development, React and Python are also well supported on Apple Silicone. \\ \hline
-    2 & Server for Deployment: Initially it could be configured with 2 vCPUs, 4 GB RAM, and 50 GB SSD storage which should be enough for the backend, it should also be easily scalable. \\ \hline
+    2 & Server for Deployment: Initially it could be configured with 2 vCPUs, 4 GB RAM, and 50 GB SSD storage which should be enough for the Backend, it should also be easily scalable. \\ \hline
     3 & End-User Devices: The app should be accessible on devices with internet connection and a web browser. This includes smartphone, laptop, even some smart IOT devices like your smart TV. \\ \hline
     \end{tabular}
     \caption{Hardware Requirements for Journal App}

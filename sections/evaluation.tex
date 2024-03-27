@@ -2,21 +2,62 @@
 \chapter{Evaluation}
 
 \section{Requirements Specification Evaluation}
-Evaluate the project against the initial requirements.
-TODO: Requirements Specification Evaluation
+From my testing section, it can be confirmed that all the originally proposed requirements from the specification have been fully met.
 
 \section{Independent End-User Feedback}
-Include feedback from end-users.
-TODO: Independent End-User Feedback
+A very critical friend of mine has tested and provided constructive feedback on the application. Here are the feedbacks:
+
+\subsubitem{Positive Feedback}
+\begin{itemize}
+    \item all the features work as expected of a journal app
+    \item the clean design of the website is a positive aspect
+    \item liked the fact that the website was fast
+    \item He thinks it's easy to use.
+    \item the user liked the fact that the website was secure and the passwords are hashed
+    \item liked how the entries are displayed
+    \item thought the statistics page was a nice touch
+\end{itemize}
+
+\subsubitem{Constructive Criticism}
+\begin{itemize}
+    \item The error message after an API call is too "codey" \\
+    If there is an error after an API call, I conditionally render the Error message by simply parsing it as a string and displaying it. A potential improvement could be creating error pages that display the error message based on the error code.
+
+    \item The content box for the journal entry is too small \\
+    In the future I could make a better UI for the journal entry page, potentially making my custom reusable input box and button components.
+
+    \item The user would have liked to see individual journal entries better
+    \item Editing journal entries
+    \item Deleting journal entries \\
+    At the moment the user can only view the journal entries and five entries are displayed on a page. The user would like to see individual journal entries better, edit, and delete them. This could be implemented by adding a button to each journal entry that allows the user to expand on the entry. Then the user can edit or delete the entry. I already have the API endpoints for deleting journal entries, but due to time constraints, I was not able to implement the Frontend for it.
+
+
+    \item The user would have liked to go back to the home page after an invalid URL \\
+    He tried to access an invalid URL, and the page was blank. I could implement a 404 page that redirects the user back to the home page.
+
+    \item The user would like to search by date or search by journal \\
+    A search bar could be implemented that allows the user to search by date or search by journal. This would be a useful design
+\end{itemize}
+
+
 
 \section{Improvements}
-Discuss potential improvements for the project.
-TODO: Improvements
-- Mobile App
-- Email
-- better Analysis
+There are many potential improvements that could be made to the project. Here are some of them:
 
+\begin{itemize}
+    \item Mobile App \\
+    The Backend is already very sophisticated with many endpoints, so a mobile app could be developed that uses the same API endpoints. This would allow users to write journal entries on the go. A mobile app could also have features like push notifications to remind the user to write a journal entry. In addition, a mobile app could allow users to write journals offline and sync when they are online.
 
-TODO: citation
-TODO: grammar
+    \item Email \\
+    A feature that I have started implementing is sending emails to users daily to prompt them to write a journal entry. Then if they respond to the email, the email will be saved as a journal entry. This feature could be created via a cron job that runs every day and sends an email to all users who have not written a journal entry in the last 24 hours. This feature could be implemented using the Django Email API. 
 
+    \item Sentiment Analysis \\
+    I have tried making calls to the API provided by Google Cloud Natural Language API, but I haven't fully implemented it. This would be useful information to have providing insight into the user's overall mental health.
+
+    \item Better Analysis \\
+    The analysis section could be improved by adding more detailed statistics about the user's journal entries. For example, I could analyse the user's sentiment over time to let the user know if they are feeling better or worse. I could also analyse the user's most common words to see what they are writing about the most. 
+
+    \item Photo and Audio Upload \\
+    It would be cool to be able to include pictures or audio. Recently I found some old pictures and it made me feel nostalgic, so having the ability to include pictures or audio in a journal entry would be a nice feature to have. This could be implemented by allowing the user to upload a picture or audio file and then storing the URL in the database. Then the user could view the picture or listen to the audio in the journal entry.
+    
+\end{itemize}

@@ -1,0 +1,466 @@
+* commit 4d1a3bb (HEAD -> main, origin/main, origin/HEAD)
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   4 hours ago
+| 
+|     commented sorting implementation
+| 
+* commit 3a8f8b6
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   5 hours ago
+| 
+|     implemented timsort
+| 
+* commit f2c5d9d
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 days ago
+| 
+|     commenting:
+|     for files involved with use context
+|     api calling
+| 
+* commit af1889f
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   6 days ago
+| 
+|     add statistics page
+| 
+* commit 8d0d6ab
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 days ago
+| 
+|     removed unnecssary files
+| 
+* commit 95028b1
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 days ago
+| 
+|     Now error response is being displayed
+| 
+* commit 2321eeb
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 days ago
+| 
+|     update:
+|     - display prompt to sign in if user tries to make entries or view entries without logged in
+| 
+* commit c3d4df9
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   13 days ago
+| 
+|     updated Entries page:
+|     - fixed logic error, now sort sorts all items instead of just current items
+| 
+* commit e3a64b3
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 weeks ago
+| 
+|     retrieve Journal Pagination and fixed logic error
+| 
+* commit 7b2bbac
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 weeks ago
+| 
+|     update retrieve entries page:
+|     - uses local storage
+|     - sorting by date
+|     - sorting function
+| 
+* commit 629ce66
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     fixed create entry logic such that it display errors
+| 
+* commit 7712f72
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     updated README
+| 
+* commit 42f601b
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     Update README.md
+| 
+* commit 3fb1621
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     - updated Entry so that it includes dates.
+|     - updated cookie policy.
+| 
+* commit 3e4b195
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     working profile that allow user to opt in for journal entry
+| 
+* commit fbb84c2
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     - working create entry page
+| 
+* commit 7d74e08
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     - updated Navbar to work with contex
+|     - implementation of interceptor (not sure if it works but it doesnt do anything bad)
+|     - register page updated to useAuth (context)
+|     - fixed bugs: JournalEntriesPage
+| 
+* commit f8460d7
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     stored user in context!!
+| 
+* commit 32ffa4e
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     Working profile page
+|     Journal Entry page able to fetch sample data but user doesnt work
+|     
+|     committing before trying to dabble with context again.
+| 
+* commit 1fd04c5
+  Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+  Date:   7 weeks ago
+  
+      initial commit: had to revert back to a working version then made some updates from there.
+
+
+
+* commit da2f097 (HEAD -> main)
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   26 hours ago
+| 
+|     test created for the Entries app
+| 
+* commit fa077bc (origin/main, origin/HEAD)
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 days ago
+| 
+|     rate limit
+|     user/test.py
+| 
+* commit ef5c594
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   3 days ago
+| 
+|     models urls ect
+| 
+* commit 98ba6f6
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   6 days ago
+| 
+|     statistics api + tests
+| 
+* commit 5961d98
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 days ago
+| 
+|     Delete Entry Endpoint and test
+| 
+* commit 3fefe5c
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   8 days ago
+| 
+|     - secret.json
+|     removal of
+|     -unnecessary API class
+|     - google sentiment fetching
+| 
+* commit 043d491
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   13 days ago
+| 
+|     - new ER diagram
+|     - edited entries class so that data can be edited from admin panel
+| 
+* commit 10a3bae
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   3 weeks ago
+| 
+|     bug fix + begin email implementation and cronjob stuff
+| 
+* commit 2a85b3c
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     added journal entry boolean to user table.
+|     created endpoint to modify the journal_prompt feature
+| 
+* commit 32a4385
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     -minor bug change
+| 
+* commit f0c111f
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     working create and get all entry end-points
+| 
+* commit 12403a3
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     Create Journal upon new User creation using signals
+| 
+* commit d8b0542
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     Moved react frontend to a different git Repo
+| 
+* commit 30efcb7
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     I am defeated. Attempted to use context for user authentication however nothing works as intended. The code in this commit doenst fully work. I might revert later...
+| 
+* commit 6a59483
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     Refactored RegisterPage so that it uses an interface and one single state to represent all the RegisterRequestData by using typescript interface. Neat.
+| 
+* commit 5b170ee
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   7 weeks ago
+| 
+|     Currently working code for user sign up and login.
+| 
+* commit e646360
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   8 weeks ago
+| 
+|     superdoper all purpose api call function
+|   
+*   commit 3026d23
+|\  Merge: f187a4d 2983cef
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     Merge pull request #1 from TheXichao/UI-homepage;-displaying-and-creating-journal
+| |     
+| |     Mergin my frontend progress so far with the main branch
+| | 
+| * commit 2983cef
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     begin creating register form
+| | 
+| * commit aa0040f
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     Created working login form with working login functionality. Returned cookies are also stored in cookies.
+| | 
+| * commit b6f193d (origin/frontend-development)
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     login form implementation using react-hook-form
+| | 
+| * commit aa1cb85
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     working post request, able to login, render test user info in login page
+| | 
+| * commit 4b2b076
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     discovered and fixed the error that prevented communication between my backend and frontend. fixed CORS error that enabled communciation on both sides. For the django site I added a CORS middleware and for vite I added a proxy.
+| | 
+| * commit fc0cdfe
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     ready Navbar
+| | 
+| * commit 2cd956d
+| | Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| | Date:   8 weeks ago
+| | 
+| |     react pages to be created
+| | 
+| * commit 47de3cb
+|/  Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+|   Date:   8 weeks ago
+|   
+|       created status bar and the corresponding pages
+| 
+* commit f187a4d
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   8 weeks ago
+| 
+|     - use axios to fetch data
+|     - created hook to make get request
+|     - use my own hook in the app
+| 
+* commit 2734642
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   8 weeks ago
+| 
+|     - created react frontend (vite)
+|     - tried fetching data using fetch
+|     - learned to useState and useRef
+|     - Async
+|     - understanding type script
+|     - interface
+|     - conditional rendering
+|     
+|     Todo:
+|     - use axios
+|     - learn post
+|     - authenticated requests
+|     - cookies
+| 
+* commit ee10bad
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   8 weeks ago
+| 
+|     Created views to be implemented to fetch journals ect. Fixed bugs.
+| 
+* commit 96de4a3
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   9 weeks ago
+| 
+|     Authentication working, allowing user to login and verity user
+| 
+* commit 56c13c5
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   9 weeks ago
+| 
+|     functioning login and logout methods which returns valid token
+| 
+* commit 84c33be
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   9 weeks ago
+| 
+|     Fixed bugs
+| 
+* commit a9e4ccf
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   9 weeks ago
+| 
+|     Test and beginning working on user authentication using token based authentication using REST framework
+|     
+|     fixed minor bugs
+| 
+* commit 90793d8
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   9 weeks ago
+| 
+|     changed to local postgre db
+|     customised UserPannel
+|     Fixed Superuser permission
+|     added appropriate URL patterns for users
+| 
+* commit 1437e00
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   9 weeks ago
+| 
+|     test for MyUser,
+|     fixed hashing with salt,
+|     updated MyUser,
+|     Registered Models for Admin
+| 
+* commit eb3b58e
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   9 weeks ago
+| 
+|     Basic user encryption and authentication implementation. To be fixed and completed!!
+| 
+* commit 06fa6d2
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   10 weeks ago
+| 
+|     removed redundency
+| 
+* commit 895fd35
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   10 weeks ago
+| 
+|     initial implementation of functionalities for MyUser
+| 
+* commit 5d6963e
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   10 weeks ago
+| 
+|     added requirements
+| 
+* commit 0f8eadf
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   10 weeks ago
+| 
+|     update ER diagram logic
+| 
+* commit babe810
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   10 weeks ago
+| 
+|     update models
+| 
+* commit 59a5a0d
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   10 weeks ago
+| 
+|     updated MyUser Models with methods to be implemented
+| 
+* commit 048f65c
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   10 weeks ago
+| 
+|     created the django app responsible for API endpoints using the DjangoRestframework
+| 
+* commit b2e3744
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 months ago
+| 
+|     fixed diagram
+| 
+* commit 1f174f8
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 months ago
+| 
+|     database diagram edit
+| 
+* commit 7d05e47
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 months ago
+| 
+|     Fixed grammar in my database diagram and the name of my models to follow the convention name for a django model. Specifically changing from plural to singular for model names.
+| 
+* commit 92287e6
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   2 months ago
+| 
+|     first attempt at implementing the database models for the app
+| 
+* commit 24e1821
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   3 months ago
+| 
+|     .gitignore file
+| 
+* commit 145e741
+| Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+| Date:   3 months ago
+| 
+|     Create README.md
+| 
+* commit c14443a
+  Author: Xichao <49397940+TheXichao@users.noreply.github.com>
+  Date:   3 months ago
+  
+      initial set up and commit: created the django template and added the .gitignore file for react&django&macos

@@ -2,13 +2,13 @@
 \chapter{Testing}
 
 \section{Test Strategy}
-Video demonstration of the app will be provided to show the app in action, this will provide a complete overview of the app and its features. This is my acceptance testing as it will show the app working and meeting the original requirements.
+Video demonstrations of the app will be provided to show the app in action, this will provide a complete overview of the app and its features. This is my acceptance testing as it will show the app working and meeting the original requirements.
 
-The primary testing strategy for my backend project would be Unit testing to see if all the smaller components of my app work as intended. Django provide its own testing framework built on top of Python's unittest module. I will be using this to test my models and the methods within them, as well as the utility functions I have created in my app. Normal, boundary and edge cases will be tested where applicable. In addition, the PostgreSQL database will also be shown in a video.
+The primary testing strategy for my Backend project would be Unit testing to see if all the smaller components of my app work as intended. Django provides its testing framework built on top of Python's unittest module. I will be using this to test my models and the methods within them, as well as the utility functions I have created in my app. Normal, boundary, and edge cases will be tested where applicable. In addition, the PostgreSQL database will also be shown in a video.
 
-For the API endpoints I will be using REST client provided by Visual Studio Code to make HTTP requests to the server and compare the result with my anticipated result. I will be doing this rather than using Django's own testing framework because I want to model real world usage of my app by making legitimate HTTP requests to actually modify application.
+For the API endpoints, I will be using REST client provided by Visual Studio Code to make HTTP requests to the server and compare the result with my anticipated result. I will be doing this rather than using Django's own testing framework because I want to model real-world usage of my app by making legitimate HTTP requests to modify the database.
 
-For my frontend Interface, I will be will be testing the app manually by interacting with the components to see if the app behaves as expected. This is also act as my integration testing as I will be testing the app as a whole - frontend depends on the backend.
+For my Frontend Interface, I will be testing the app manually by interacting with the components to see if the app behaves as expected. This also acts as my integration testing as I will be testing the app as a whole - the Frontend depends on the Backend.
 
 \subsection{Unit Testing}
 \subsubsection{User}
@@ -129,7 +129,7 @@ Here are the unit tests I have written for the Journal model in my app:
 \end{figure}
 
 \section{Endpoints}
-To model real world usage, I will be making HTTP requests to the server and compare the result with my anticipated result. Here are a list of views created in my app:
+To model real-world usage, I will be making HTTP requests to the server and compare the result with my anticipated result. Here is a list of views created in my app:
 
 \begin{minted}{python3}
     # from entries/urls.py
@@ -167,7 +167,7 @@ To model real world usage, I will be making HTTP requests to the server and comp
 \subsection{Endpoint tests with Rest Client}
 \includegraphics[width=\textwidth]{Assets/django_running.png}
 
-\subsubsection{Once the server is running, I began to make requests, Appendix \ref{} for the results}
+\subsubsection{Once the server is running, I began to make requests, see Appendix for the results}
 \subsection{Test Cases Summary}
 
 \begin{table}[H]
@@ -199,7 +199,85 @@ Get journal statistics                         & Successful      & Fig.~\ref{fig
 \newpage
 
 \section{Frontend Interface}    
-See test videos for the frontend interface being interacted with.
+\subsection{Home Page}
+
+\subsubsection{Logged Out View}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-home.png}
+\caption{Home page view when logged out. The navigation bar shows options available to non-authenticated users.}
+\label{fig:uihomeloggedout}
+\end{figure}
+
+\subsubsection{Logged In View}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-home-logged-in.png}
+\caption{Home page view when logged in. The navigation bar changes to show user-specific options.}
+\label{fig:uihomeloggedin}
+\end{figure}
+
+\subsection{Authentication Pages}
+
+\subsubsection{Login Page}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-login.png}
+\caption{Login page view.}
+\label{fig:uilogin}
+\end{figure}
+
+\subsubsection{Registration Page}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-register.png}
+\caption{Registration page view.}
+\label{fig:uiregister}
+\end{figure}
+
+\subsubsection{Profile Page}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-profile.png}
+\caption{User profile page. Displays user information.}
+\label{fig:uiprofile}
+\end{figure}
+
+\subsubsection{Require Login Page}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-require-login-page.png}
+\caption{Page displayed when accessing pages that require user to be logged in.}
+\label{fig:uirequirelogin}
+\end{figure}
+
+\subsubsection{Statistics Page}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-statistics.png}
+\caption{Statistics page. Shows statistics about the user's entry pattern.}
+\label{fig:uistatistics}
+\end{figure}
+
+
+
+\subsection{User Interaction}
+
+\subsubsection{View Entries}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-View-Entries.png}
+\caption{View entries page. Displays the user's journal entries in a paginated form, with the option to sort entries.}
+\label{fig:uiviewentries}
+\end{figure}
+
+\subsubsection{Create Journal Entry}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Assets/UI-create-journal.png}
+\caption{Create journal entry page.}
+\label{fig:uicreatejournal}
+\end{figure}
 
 \section{Testing Video}
 The video demonstrates the app in action, showing the app working and meeting the original requirements. The video can be found at the following link: \url{https://drive.google.com/drive/folders/1aORi1Iy9CklbfWv4FY6oDLnTgXSax8Gc?usp=sharing}
@@ -210,6 +288,7 @@ The video demonstrates the app in action, showing the app working and meeting th
     \label{fig:testing_video}
 \end{figure}
 
+
 \section{System Tests}
 Comparing my current app against my original requirements:
 \begin{table}[H]
@@ -217,19 +296,19 @@ Comparing my current app against my original requirements:
     \begin{tabular}{|l|p{8cm}|p{4cm}|}  
     \hline
     \textbf{ID} & \textbf{Requirement Description}& \textbf{Has Been Met} \\ \hline
-    1.1 & Design data models for users, journal entries, with relationships defined. & Yes\\ \hline
+    1.1 & Design data models for users, and journal entries, with relationships defined. & Yes\\ \hline
     
-    1.2 & Have an effective way to check the submitted user information, journal entries, and related data before stored in the database, ensuring data stored are in the required format. & Yes \\ \hline
+    1.2 & Have an effective way to check the submitted user information, journal entries, and related data before storing it in the database, ensuring the data stored are in the required format. & Yes \\ \hline
     
     1.3 & Have a way to generate statistics of the user's journaling habits, such as the most active month of the user, average entries made per week, etc. & Yes \\ \hline
     
-    2.1 & Develop API endpoints with functionalities implemented to handle user authentication (login and registration) and other core endpoints that drives the journal app as a whole & Yes\\ \hline
+    2.1 & Develop API endpoints with functionalities implemented to handle user authentication (login and registration) and other core endpoints that drive the journal app as a whole & Yes\\ \hline
     
     2.2 & Features for secure password storage(salting and hashing) and and authenticate; token generation for session management.& Yes\\ \hline
     
     3.1 & Ensure all API endpoints are secured and accessible only to authenticated users, using tokens or similar mechanisms for session management.& Yes \\ \hline
     
-    3.2 & Ensure smooth and spontaneous communication with the frontend. & Yes\\ \hline
+    3.2 & Ensure smooth and spontaneous communication with the Frontend. & Yes\\ \hline
     4.1 & Design the Backend with the room for more functionalities & Yes \\ \hline
     
     \end{tabular}
@@ -243,19 +322,19 @@ Comparing my current app against my original requirements:
     \textbf{ID} & \textbf{Requirement Description} & \textbf{Has Been Met}\\ \hline
     1.1 & Develop a login page to authenticate users, include forms for user input and dynamically provide error/feedback when necessary. & Yes \\ \hline
     
-    1.2 & Implement a registration page enabling new users to create an account, take in input for email, password, last name, first name and interact/update backend. Provide feedback to the user after submission. & Yes\\ \hline
+    1.2 & Implement a registration page enabling new users to create an account, take in input for email, password, last name, and first name, and interact/update Backend. Provide feedback to the user after submission. & Yes\\ \hline
     
     1.3 & Develop a place where the user can see details about themselves ie their personal information and journal statistics & Yes\\ \hline
     
-    2.1 & Create a page for users to compose new journal entries. Input parameters are title and content of the entry. Interact with the corresponding endpoint and provide feedback to the user.& Yes\\ \hline
+    2.1 & Create a page for users to compose new journal entries. Input parameters are the title and content of the entry. Interact with the corresponding endpoint and provide feedback to the user.& Yes\\ \hline
     
     2.2 & Design a retrieve journal page that lists all the user’s entries, with options for sorting the entries in ascending or descending order based on creation date or other criteria in an efficient way. & Yes\\ \hline
     
-    3.1 & Implement navigation bar that adjusts its visibility of options based on the user's login status. & Yes\\ \hline
+    3.1 & Implement a navigation bar that adjusts its visibility of options based on the user's login status. & Yes\\ \hline
     
     4.1 & Utilize state management techniques to keep the user logged in across different pages, preserving session information securely. & Yes\\ \hline
     
-    4.2 & Handle fetching, posting, and updating data through JSON responses from the backend. & Yes \\ \hline
+    4.2 & Handle fetching, posting, and updating data through JSON responses from the Backend. & Yes \\ \hline
 \end{tabular}
 \caption{Frontend Requirements for Journal App}
 \end{table}
