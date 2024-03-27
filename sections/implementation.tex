@@ -271,6 +271,8 @@ Data models are the backbone of my backend server. In my design section (see fig
           return verify_password(raw_password, self.password)
   
 \end{minted}
+Something to note here is that I have set the email field to be unique so there are no duplicate users; creation time is also auto added.
+
 To improve maintainability and readability, I have defined many helper functions in a separate file called utils.py. This is an example of decomposition and in my codebase I try to follow the Single Responsibility Principal as much as possible. This makes the code more self contained, and also makes it easier to perform unit tests on the helper functions. In the code included in the appendix it will contain all the relevant codes relating to what I talk about in this section of the report.
 
 
@@ -393,6 +395,9 @@ To improve maintainability and readability, I have defined many helper functions
           return response.document_sentiment.score
 \end{minted}
 
+Journal and MyUser has a one to one Aggregate relationship, I figured it doesn't make sense for a Journal to exist, so I have specified an on\_delete option to resolve this integrity error, if a user is deleted. CASCADE is just an option that will delete the journal if the user is deleted. This is another defensive design. The same relationship exist between Entries and Journal as Journals are composed of Entries.
+
+
 \subsection{Generated diagram}
 
 \begin{figure}[H]
@@ -434,13 +439,134 @@ export interface Statistics {
 
 \section{Algorithms}
 
-TODO: include sorting algorithms
+\subsection{Applying Tim Sort on Entries with specified Key}
+I have fully explained how the code works in detail in the comments of the code. How as a summary Tim Sort works by applying insertion on chunks of the array, then these smaller chunks are merged together. Here is the implementation:
+\begin{minted}{python3}
+  import { Entry} from "./JournalEntriesPage";
+
+
+  export function sortEntriesByDate(entries: Entry[] | null, sortOrder: string): Entry[] {
+    // defensive programming
+    if (!entries) {
+      return Array<Entry>();
+    }
+    // zipping the entries with their creation date
+    const zippedEntries = entries.map((entry) => {
+      return [entry, new Date(entry.creation_date).getTime()] as [Entry, number];
+    })
+  
+    timSort(zippedEntries);
+  
+    // returns the sorted entries in unzipped format
+    if (sortOrder === "desc") {
+      return zippedEntries.map((zippedEntry) => zippedEntry[0]).reverse();
+    }
+    return zippedEntries.map((zippedEntry) => zippedEntry[0]);
+  }
+  
+  
+  function insertionSort<Key>(
+    arr: Array<[Entry, Key]>,
+    startIndex: number,
+    endIndex: number,
+  ) {
+  
+    // iterate the segment of the array from startIndex to endIndex
+    for (let i = startIndex + 1; i < endIndex; i++) {
+      // increment the currently searching index i with each pass, and use j as a temprary index to compare the current element with all previous elements
+      let j = i;
+  
+      while (j > startIndex && arr[j - 1][1] > arr[j][1]) {
+  
+        // compare the current element with every single previous element and keep swapping until it is in the right position
+        swap(arr, j, j - 1);
+        j--;
+      }
+    }
+  }
+  
+  function swap<T>(arr: Array<[Entry, T]>, i: number, j: number) {
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+  
+  
+  function merge<Key>(arr: Array<[Entry, Key]>, left: number, mid: number, right: number) {
+    // the two different segments sorted by insertion sort need to be merged, the left segment is from left to mid, and the right segment is from mid to right
+    const leftArr = arr.slice(left, mid);
+    const rightArr = arr.slice(mid, right);
+  
+  
+    // i is the index of the left segment, j is the index of the right segment, and k is the index of the merged segment
+    let i = 0;
+    let j = 0;
+    let k = left;
+    
+    // going through all the elements of the left and right segments and compare them, and merge them in the right order
+    while (i < leftArr.length && j < rightArr.length) {
+      
+      // basically means if the left element is smaller than the right element, then put the left element in the merged segment, otherwise put the right element in the merged segment in that sequence
+      if (leftArr[i][1] <= rightArr[j][1]) {
+        arr[k] = leftArr[i];
+        i++;
+      } else {
+        arr[k] = rightArr[j];
+        j++;
+      }
+      k++;
+    }
+  
+    // if there are any remaining elements in the left or right segment, then put them in the merged segment
+    while (i < leftArr.length) {
+      arr[k] = leftArr[i];
+      i++;
+      k++;
+    }
+  
+    while (j < rightArr.length) {
+      arr[k] = rightArr[j];
+      j++;
+      k++;
+    }
+  }
+  
+  function timSort<Key>(zippedEntries: Array<[Entry, Key]>){
+    // run means the size of the segments that will be sorted by insertion sort
+    const RUN = 16;
+    const n = zippedEntries.length;
+  
+    // use insertion sort on all the individual runs with the size of RUN
+    for (let i = 0; i < n; i += RUN) {
+      // math.min is used so that the sorting does not go out of bounds
+      insertionSort(zippedEntries, i, Math.min(i + RUN, n));
+    }
+  
+  
+    // merge all the the sorted segments
+    for (let size = RUN; size < n; size = 2 * size) {
+      for (let left = 0; left < n; left += 2 * size) {
+        const mid = left + size;
+        const right = Math.min(left + 2 * size, n);
+        merge(zippedEntries, left, mid, right);
+      }
+    }
+  }
+  
+\end{minted}
+
+The code I have written here is designed to be reusable as I have created the sorting functions such that it sorts based on a zipped entry.
+
+sortEntriesByDate is one of the function that utilise the timSort module, It takes in an array of entries, then create a new array with a tuples of the entry and the creation date. This is then passed to the timSort function which sorts the array based on second index of the array (the key). The sorted array is then unzipped and returned. 
+
+In the future the sorting modules can be used with any key by simply zipping the array with a different key and passing it to the timSort function. 
+
 
 \subsection{Implementation of the SQL Queries}
 To provide context, the following are the SQL queries that are implemented in the Django ORM as methods of the Journal model. This allow me to leverage powerful features of Python/Django enabling me to make more dynamic queries with ease. For example I can access the journal id of the current instance of the model using self.journal\_id, which can then be used directly in the query through string interpolation. In action, when a user accesses the API endpoint to get their journal statistics, self refers to user making the request. Therefore, the query will return the statistics of the journal that the user who just made that request. Having these as methods is also a good practice as it allows for better modularity and readability.
 
 
-\subsubsection{Most Active Month}
+\subsubsection{Most Active Month (see test \ref{fig:most_active_month})}
 \begin{minted}{SQL}
 SELECT
   EXTRACT(MONTH FROM "Entries_entry".creation_date) AS month,
@@ -460,7 +586,7 @@ LIMIT 1;
 
 AS is used to alias the column names which makes the query more readable and efficient to write.
 
-\subsubsection{Average Entry Count Per Week}
+\subsubsection{Average Entry Count Per Week (see test \ref{fig:average_entry_per_week})}
 \begin{minted}{SQL}
   SELECT
     AVG(entry_count)
@@ -480,7 +606,7 @@ AS is used to alias the column names which makes the query more readable and eff
   )
 \end{minted}
 
-\subsubsection{Total Word Count}
+\subsubsection{Total Word Count (see test \ref{fig:total_word_count}}
 \begin{minted}{SQL}
 SELECT
     SUM(

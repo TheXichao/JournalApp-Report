@@ -1,9 +1,239 @@
 % appendix.tex
 \chapter{Appendix}
 
-\section{Code Listing}
-Include relevant code listings.
+\section{Database SQL Tests}
 
-\subsection{Appendix A – Code Listing}
-Include code listings as an appendix.
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{Assets/test_average_entry_per_week.png}
+    \caption{Query result for average entry per week.}
+    \label{fig:average_entry_per_week}
+\end{figure}
 
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{Assets/test_most_active_month.png}
+    \caption{Query result for most active month.}
+    \label{fig:most_active_month}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{Assets/test_total_word_count.png}
+    \caption{Query result for total word count.}
+    \label{fig:total_word_count}
+\end{figure}
+
+
+\section{API Test Details}
+
+\subsection{User App}
+\subsection{register/}
+\begin{figure}[H]
+    \caption{Request to register a new user that already exists}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_register_already_exist.png}
+    \label{fig:request_register_already_exist}
+\end{figure}
+
+\begin{figure}{H}
+    \caption{Response to register a new user that already exists}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_register_already_exist.png}
+    \label{fig:response_register_already_exist}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Request to register a new user that does not exist}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_register_sucess.png}
+    \label{fig:request_register_new_user}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to register a new user that does not exist}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_register_sucess.png}
+    \label{fig:response_register_new_user}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Request to register a new user with an invalid email}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_register_invalid_email.png}
+    \label{fig:request_register_invalid_email}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to register a new user with an invalid email}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_register_invalid_email.png}
+    \label{fig:response_register_invalid_email}
+\end{figure}
+
+\subsection{login/}
+\begin{figure}[H]
+    \caption{Request to login with a valid user}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_login_sucessful.png}
+    \label{fig:request_login_sucessful}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to valid login}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_login_sucessful.png}
+    \label{fig:response_login_sucessful}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Request to login with an invalid user}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_login_invalid_user.png}
+    \label{fig:request_login_invalid_user}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to invalid login with an invalid user}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_login_invalid_user.png}
+    \label{fig:response_login_invalid_user}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Request to login with an invalid password}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_login_invalid_password.png}
+    \label{fig:request_login_invalid_password}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to invalid login with an invalid password}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_login_invalid_password.png}
+    \label{fig:response_login_invalid_password}
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \caption{Request to login with an invalid email}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_login_invalid_user.png}
+    \label{fig:request_login_invalid_email}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to invalid login with an invalid email}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_login_invalid_user.png}
+    \label{fig:response_login_invalid_email}
+\end{figure}
+
+
+\subsection{test\_user/}
+This is used to test the user authentication. The user must be authenticated with a token to access this endpoint. Also it tests wether the server is able to retrieve the user information from the token.
+
+\begin{figure}[H]
+    \caption{Request to test user authentication with a valid token}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_test_user_authtoken.png}
+    \label{fig:request_test_user_authtoken}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to test user authentication with a valid token}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_test_user_authtoken.png}
+    \label{fig:response_test_user_authtoken}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Request to test user authentication with an invalid token}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_test_user_authtoken_invalid.png}
+    \label{fig:request_test_user_authtoken_invalid}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to test user authentication with an invalid token}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_test_user_authtoken_invalid.png}
+    \label{fig:response_test_user_authtoken_invalid}
+\end{figure}
+
+\subsection{Entry App}
+
+\subsection{sample/}
+\begin{figure}[H]
+    \caption{Request to get samples}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_get_samples.png}
+    \label{fig:request_get_samples}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to get samples}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_get_samples.png}
+    \label{fig:response_get_samples}
+\end{figure}
+
+\subsection{testUser/}
+\begin{figure}[H]
+    \caption{Request to test user in entry app}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_test_user_entry.png}
+    \label{fig:request_test_user_entry}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to test user in entry app}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_test_user_entry.png}
+    \label{fig:response_test_user_entry}
+\end{figure}
+
+\subsection{createEntry/}
+\begin{figure}[H]
+    \caption{Request to create a new entry}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_create_new_entry.png}
+    \label{fig:request_create_new_entry}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to creating a new entry}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_create_new_entry.png}
+    \label{fig:response_create_new_entry}
+\end{figure}
+
+\subsection{getEntries/}
+\begin{figure}[H]
+    \caption{Request to get an entry}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_get_entry.png}
+    \label{fig:request_get_entry}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to get an entry}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_get_entry.png}
+    \label{fig:response_get_entry}
+\end{figure}
+
+\subsection{deleteEntry/}
+\begin{figure}[H]
+    \caption{Request to delete an entry with an invalid id}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_delete_entry_invalid.png}
+    \label{fig:request_delete_entry_invalid}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to invalid delete entry request with invalid id}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_delete_entry_invalid.png}
+    \label{fig:response_delete_entry_invalid}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Request to delete an entry with valid id}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_delete_entry_valid.png}
+    \label{fig:request_delete_entry_valid}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to valid delete entry request with valid id}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_delete_entry_valid.png}
+    \label{fig:response_delete_entry_valid}
+\end{figure}
+
+\subsection{getJournalStatistics/}
+\begin{figure}[H]
+    \caption{Request to get journal statistics}
+    \includegraphics[width=\textwidth]{Assets/api_test/request_get_journal_statistics.png}
+    \label{fig:request_get_journal_statistics}
+\end{figure}
+
+\begin{figure}[H]
+    \caption{Response to get journal statistics}
+    \includegraphics[width=\textwidth]{Assets/api_test/response_get_journal_statistics.png}
+    \label{fig:response_get_journal_statistics}
+\end{figure}
+
+
+
+\section{Code Listings}
+\input{codeListings.tex}
